@@ -1,4 +1,4 @@
-meuApp.controller('SimpleController', function($scope) {
+controllers.SimpleController = function($scope) {
 	$scope.personagens = [ {
 		name : 'Griffin',
 		type : 'Human'
@@ -18,4 +18,6 @@ meuApp.controller('SimpleController', function($scope) {
 		name : 'Monroe',
 		type : 'Butlbad'
 	} ];
-});
+};
+
+meuApp.controller(controllers);

@@ -1,8 +1,9 @@
 /**
  * App Meu App.
  */
-var meuApp = angular.module('meuApp', []);
+var meuApp = angular.module('meuApp', ['ngRoute',]);
 var outroApp = angular.module('outroApp', []);
+var controllers = {};
 
 /**
  * App Outro app
