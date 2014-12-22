@@ -1,0 +1,19 @@
+<div class="container">
+	Name: <input type="text" data-ng-model="filter.nome" />
+	<br>
+	Tipo: <input type="text" data-ng-model="filter.tipo" />
+</div>
+<div class="container">
+	<ul>
+		<li ng-repeat="grimm in personagens | filter: filter.nome | filter: filter.tipo | orderBy: grimm.name">{{grimm.name | uppercase}} - {{grimm.type | lowercase}}</li>
+	</ul>
+</div>
+<div>
+	Nome:
+	<input type="text" data-ng-model="novoNome.name" />
+	<br>
+	Tipo:
+	<input type="text" data-ng-model="novoNome.type" />
+	<br>
+	<button data-ng-click="addNovoNome()">Adicionar novo nome</button>
+</div>

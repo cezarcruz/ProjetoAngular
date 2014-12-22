@@ -10,18 +10,14 @@
 		<script type="text/javascript" src="js/app/router.js"></script>			
 	</head>
 	<body>
-		<h1>Home</h1>
-		<div ng-controller="SimpleController">
-			<div class="container">
-				Name: <input type="text" ng-model="nome" />
-				<br>
-				Tipo: <input type="text" ng-model="tipo" />
-			</div>
-			<div class="container">
-				<ul>
-					<li ng-repeat="grimm in personagens | filter: nome | filter: tipo | orderBy: grimm.name">{{grimm.name | uppercase}} - {{grimm.type | lowercase}}</li>
-				</ul>
-			</div>
+		<nav>
+			<ul>
+				<li><a href="#/home">Home</a></li>
+				<li><a href="#/add">Add</a></li>
+			</ul>
+		</nav>
+		<div>			
+			<div data-ng-view></div>
 		</div>
 	</body>
 </html>

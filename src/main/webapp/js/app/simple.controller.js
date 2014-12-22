@@ -18,6 +18,14 @@ controllers.SimpleController = function($scope) {
 		name : 'Monroe',
 		type : 'Butlbad'
 	} ];
+
+	$scope.addNovoNome = function () {		
+		$scope.personagens.push({
+			name : $scope.novoNome.name,
+			type : $scope.novoNome.type
+		});		
+	};
+	$scope.showOverlay = true;
 };
 
 meuApp.controller(controllers);
