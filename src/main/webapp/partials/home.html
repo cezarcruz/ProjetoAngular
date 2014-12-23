@@ -1,1 +1,5 @@
-home.html
+<div data-ng-init="digitis = 2">
+	<input style="width: 200px;" type="text" data-ng-model="modelo" data-ng-keyup="changeCampo()" data-ng-show="digitis == 2"/>
+	<input style="width: 400px;" type="text" data-ng-model="modelo" data-ng-keyup="changeCampo()" data-ng-show="digitis == 4"/>
+</div>
+<div data-alert></div>

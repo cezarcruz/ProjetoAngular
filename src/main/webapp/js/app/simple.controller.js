@@ -1,4 +1,7 @@
 controllers.SimpleController = function($scope) {
+	
+	//$scope.digits = 2;
+	
 	$scope.personagens = [ {
 		name : 'Griffin',
 		type : 'Human'
@@ -25,7 +28,29 @@ controllers.SimpleController = function($scope) {
 			type : $scope.novoNome.type
 		});		
 	};
+	
+	$scope.changeCampo = function () {
+		var teste = 2;
+		if ($scope.modelo.length > 2) {
+			teste = 2;
+		} else {
+			teste = 4;
+		}
+		$scope.digits = teste;
+	};
 	$scope.showOverlay = true;
 };
 
 meuApp.controller(controllers);
+
+meuApp.directive("alert", function() {
+	return {
+		templateUrl : 'partials/alert.html',
+		replace: true,
+		scope : {
+			
+		}
+	};
+}).directive("mascara", function() {
+	
+});
