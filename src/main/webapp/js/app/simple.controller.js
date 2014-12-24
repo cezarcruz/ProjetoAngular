@@ -1,4 +1,4 @@
-controllers.SimpleController = function($scope) {
+controllers.SimpleController = function($scope, $http) {
 	
 	//$scope.digits = 2;
 	
@@ -23,10 +23,17 @@ controllers.SimpleController = function($scope) {
 	} ];
 
 	$scope.addNovoNome = function () {		
-		$scope.personagens.push({
-			name : $scope.novoNome.name,
-			type : $scope.novoNome.type
-		});		
+		var retorno;
+		var estado;
+		$http.get('/angular/oi').success(function(data, status) {
+			$scope.personagens.push(data);
+			console.log(status);
+		}).error(function(data, status) {
+			retorno = data;
+			estado = status;
+		});
+		
+				
 	};
 	
 	$scope.changeCampo = function () {
@@ -54,3 +61,13 @@ meuApp.directive("alert", function() {
 }).directive("mascara", function() {
 	
 });
+
+meuApp.factory('simpleFactory', function(){
+	var factory = {};
+	var personagens = [{name: 'Jhon', type : 'Ninja'}, {name: 'Fusco', type : 'Cop'}];
+	factory.getPersonagens = function() {
+		return personagens;
+	}
+	
+	return factory;
+})
