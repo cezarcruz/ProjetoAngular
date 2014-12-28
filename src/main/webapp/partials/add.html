@@ -5,7 +5,7 @@
 </div>
 <div class="container">
 	<ul>
-		<li ng-repeat="grimm in personagens | filter: filter.nome | filter: filter.tipo | orderBy: grimm.name">{{grimm.name | uppercase}} - {{grimm.type | lowercase}}</li>
+		<li data-ng-repeat="grimm in personagens | orderBy: 'name' | filter: filter.nome | filter: filter.tipo">{{grimm.name}} - {{grimm.type | lowercase}}</li>
 	</ul>
 </div>
 <div>

@@ -1,4 +1,9 @@
+#ECLIPSE
 .settings
 .project
 .classpath
 target
+
+#InteliJ IDEA
+.idea
+angular.js.iml

@@ -1,7 +1,7 @@
 controllers.SimpleController = function($scope, $http) {
-	
-	//$scope.digits = 2;
-	
+
+	// $scope.digits = 2;
+
 	$scope.personagens = [ {
 		name : 'Griffin',
 		type : 'Human'
@@ -22,21 +22,35 @@ controllers.SimpleController = function($scope, $http) {
 		type : 'Butlbad'
 	} ];
 
-	$scope.addNovoNome = function () {		
+	$scope.addNovoNome = function() {
 		var retorno;
 		var estado;
-		$http.get('/angular/oi').success(function(data, status) {
+		$http.get('/angular/home/oi').success(function(data, status) {
 			$scope.personagens.push(data);
 			console.log(status);
 		}).error(function(data, status) {
 			retorno = data;
 			estado = status;
 		});
-		
-				
+
+		$http({
+			url : '/angular/home/',
+			method : "POST",
+			data : {
+				name : 'Nick',
+				type : 'Grimm'
+			},
+			headers : {
+				'Content-Type' : 'application/json'
+			}
+		}).success(function(data, status, headers, config) {
+			console.log(data);
+			console.log(status);
+		});
+
 	};
-	
-	$scope.changeCampo = function () {
+
+	$scope.changeCampo = function() {
 		var teste = 2;
 		if ($scope.modelo.length > 2) {
 			teste = 2;
@@ -53,21 +67,22 @@ meuApp.controller(controllers);
 meuApp.directive("alert", function() {
 	return {
 		templateUrl : 'partials/alert.html',
-		replace: true,
-		scope : {
-			
-		}
+		replace : true
 	};
-}).directive("mascara", function() {
-	
 });
 
-meuApp.factory('simpleFactory', function(){
+meuApp.factory('simpleFactory', function() {
 	var factory = {};
-	var personagens = [{name: 'Jhon', type : 'Ninja'}, {name: 'Fusco', type : 'Cop'}];
+	var personagens = [ {
+		name : 'Jhon',
+		type : 'Ninja'
+	}, {
+		name : 'Fusco',
+		type : 'Cop'
+	} ];
 	factory.getPersonagens = function() {
 		return personagens;
 	}
-	
+
 	return factory;
 })
