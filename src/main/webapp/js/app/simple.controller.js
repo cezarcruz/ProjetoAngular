@@ -25,29 +25,26 @@ controllers.SimpleController = function($scope, $http) {
 	$scope.addNovoNome = function() {
 		var retorno;
 		var estado;
+
 		$http.get('/angular/home/oi').success(function(data, status) {
-			$scope.personagens.push(data);
+			$http({
+				url : '/angular/home/tratastr',
+				method : "POST",
+				data : data,
+				headers : {
+					'Content-Type' : 'application/json'
+				}
+			}).success(function(data, status) {
+				$scope.personagens.push(data);
+			}).error(function(data, status) {
+				console.log(data);
+				console.log(status);
+			});
 			console.log(status);
 		}).error(function(data, status) {
-			retorno = data;
-			estado = status;
-		});
-
-		$http({
-			url : '/angular/home/',
-			method : "POST",
-			data : {
-				name : 'Nick',
-				type : 'Grimm'
-			},
-			headers : {
-				'Content-Type' : 'application/json'
-			}
-		}).success(function(data, status, headers, config) {
 			console.log(data);
 			console.log(status);
 		});
-
 	};
 
 	$scope.changeCampo = function() {
