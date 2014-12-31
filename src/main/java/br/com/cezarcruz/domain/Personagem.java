@@ -1,8 +1,16 @@
 package br.com.cezarcruz.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Personagem {
 
+	@Id
+	@GeneratedValue
 	private long id;
+	
 	private String name;
 	private String type;
 
