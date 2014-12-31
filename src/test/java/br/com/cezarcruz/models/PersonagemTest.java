@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import br.com.cezarcruz.domain.Personagem;
+
 public class PersonagemTest {
 
 	/**
@@ -12,8 +14,8 @@ public class PersonagemTest {
 	@Test
 	public void testPersonagemStringString() {
 		Personagem p = new Personagem();
-		p.setname("Jhon");
-		assertEquals("Jhon", p.getname());
+		p.setName("Jhon");
+		assertEquals("Jhon", p.getName());
 		p.setType("Ninja");
 		assertEquals("Ninja", p.getType());
 		

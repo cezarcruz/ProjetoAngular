@@ -9,7 +9,8 @@
 		<link href="css/style.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body data-ng-controller="facebookCtrl">
-		<table>
+		<label data-ng-show="esconder">Sem dados...</label>
+		<table data-ng-hide="esconder">
 			<tr>
 				<td>ID</td>
 				<td>{{dados.id}}</td>
@@ -43,6 +44,9 @@
 				<td>{{dados.username}}</td>
 			</tr>
 		</table>
+		<br>
+		<label>Facebook Username</label>
+		<input type="text" data-ng-model="username"/>
 		<button data-ng-click="buscaDados()">Buscar dados</button>
 	</body>
 </html>

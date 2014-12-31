@@ -7,11 +7,16 @@ var controllers = {};
 facebookApp.controller("facebookCtrl", function($scope, $http){
 	
 	$scope.dados = {};
+	$scope.esconder = true;
 	
 	$scope.buscaDados = function() {
-		$http.get('http://graph.facebook.com/cezarmaw').success(function(data, status) {
+		var username = $scope.username;
+		$scope.esconder = true;
+		$http.get('http://graph.facebook.com/' + username).success(function(data, status) {
 			$scope.dados = data;
+			$scope.esconder = false;
 		}).error(function(data, status) {
+			$scope.esconder = true;
 			console.log(data);
 			console.log(status);
 		});
