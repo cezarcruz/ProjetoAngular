@@ -14,10 +14,10 @@ public class PersonagemTest {
 	@Test
 	public void testPersonagemStringString() {
 		Personagem p = new Personagem();
-		p.setName("Jhon");
-		assertEquals("Jhon", p.getName());
-		p.setType("Ninja");
-		assertEquals("Ninja", p.getType());
+		p.setNome("Jhon");
+		assertEquals("Jhon", p.getNome());
+		p.setTipo("Ninja");
+		assertEquals("Ninja", p.getTipo());
 		
 		assertEquals("{\"name\" : \"JHON\", \"type\" : \"NINJA\"}", p.toUpperString());
 	}
