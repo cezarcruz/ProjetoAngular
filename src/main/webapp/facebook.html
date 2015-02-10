@@ -1,52 +1,52 @@
 <html data-ng-app="facebookApp">
-	<head>
-		<title>Facebook</title>
-		<meta charset="utf-8">
-		<script type="text/javascript" src="js/angular.js"></script>
-		<script type="text/javascript" src="js/angular-route.min.js"></script>		
-		<script type="text/javascript" src="js/app/facebook/facebook.controller.js"></script>
-		<script type="text/javascript" src="js/app/facebook/facebook.service.js"></script>	
-		<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	</head>
-	<body data-ng-controller="facebookCtrl">
-		<label data-ng-show="esconder">Sem dados...</label>
-		<table data-ng-hide="esconder">
-			<tr>
-				<td>ID</td>
-				<td>{{dados.id}}</td>
-			</tr>
-			<tr>
-				<td>Primeiro nome</td>
-				<td>{{dados.first_name}}</td>
-			</tr>
-			<tr>
-				<td>Sexo</td>
-				<td>{{dados.gender}}</td>
-			</tr>
-			<tr>
-				<td>Ultimo nome</td>
-				<td>{{dados.last_name}}</td>
-			</tr>
-			<tr>
-				<td>Link</td>
-				<td><a href="{{dados.link}}">{{dados.link}}</a></td>
-			</tr>
-			<tr>
-				<td>Localização</td>
-				<td>{{dados.locale}}</td>
-			</tr>
-			<tr>
-				<td>Nome</td>
-				<td>{{dados.name}}</td>
-			</tr>
-			<tr>
-				<td>Nome de usuário</td>
-				<td>{{dados.username}}</td>
-			</tr>
-		</table>
-		<br>
-		<label>Facebook Username</label>
-		<input type="text" data-ng-model="username"/>
-		<button data-ng-click="buscaDados()">Buscar dados</button>
-	</body>
+    <head>
+        <title>Facebook</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/angular.js"></script>
+        <script type="text/javascript" src="js/angular-route.min.js"></script>		
+        <script type="text/javascript" src="js/app/facebook/facebook.controller.js"></script>
+        <script type="text/javascript" src="js/app/facebook/facebook.service.js"></script>	
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body data-ng-controller="facebookCtrl">
+        <label data-ng-show="esconder">Sem dados...</label>
+        <table data-ng-hide="esconder">
+            <tr>
+                <td>ID</td>
+                <td>{{dados.id}}</td>
+            </tr>
+            <tr>
+                <td>Primeiro nome</td>
+                <td>{{dados.first_name}}</td>
+            </tr>
+            <tr>
+                <td>Sexo</td>
+                <td>{{dados.gender}}</td>
+            </tr>
+            <tr>
+                <td>Ultimo nome</td>
+                <td>{{dados.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Link</td>
+                <td><a href="{{dados.link}}">{{dados.link}}</a></td>
+            </tr>
+            <tr>
+                <td>Localização</td>
+                <td>{{dados.locale}}</td>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>{{dados.name}}</td>
+            </tr>
+            <tr>
+                <td>Nome de usuário</td>
+                <td>{{dados.username}}</td>
+            </tr>
+        </table>
+        <br>
+        <label>Facebook Username</label>
+        <input type="text" data-ng-model="username"/>
+        <button data-ng-click="buscaDados()">Buscar dados</button>
+    </body>
 </html>

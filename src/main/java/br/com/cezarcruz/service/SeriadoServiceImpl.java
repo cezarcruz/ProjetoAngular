@@ -13,18 +13,17 @@ import br.com.cezarcruz.domain.SeriadoRepository;
 @Validated
 public class SeriadoServiceImpl implements SeriadoService {
 
-	private final SeriadoRepository repository;
-	
-	
-	@Override
-	@Transactional
-	public Seriado save(Seriado s) {
-		return this.repository.save(s);
-	}
-	
-	@Inject
-	public SeriadoServiceImpl(final SeriadoRepository repository) {
-		this.repository = repository;
-	}
-	
+    private final SeriadoRepository repository;
+
+    @Override
+    @Transactional
+    public Seriado save(Seriado s) {
+        return this.repository.save(s);
+    }
+
+    @Inject
+    public SeriadoServiceImpl(final SeriadoRepository repository) {
+        this.repository = repository;
+    }
+
 }

@@ -10,16 +10,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class Application extends SpringBootServletInitializer  {
-	/**
-	 * Metodo main pra inicializar o spring.
-	 * @param args
-	 */
-	public void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-	
-	@Override
+public class Application extends SpringBootServletInitializer {
+
+    /**
+     * Metodo main pra inicializar o spring.
+     *
+     * @param args
+     */
+    public void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
     protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
         return application.sources(Application.class);
     }

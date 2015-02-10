@@ -13,17 +13,17 @@ import br.com.cezarcruz.domain.PersonagemRepository;
 @Validated
 public class PersonagemServiceImpl implements PersonagemService {
 
-	private final PersonagemRepository repository;
-	
-	@Inject
-	public PersonagemServiceImpl(final PersonagemRepository repository) {
-		this.repository = repository;
-	}
-	
-	@Override
-	@Transactional
-	public Personagem save(Personagem p) {	
-		return repository.save(p);
-	}
+    private final PersonagemRepository repository;
+
+    @Inject
+    public PersonagemServiceImpl(final PersonagemRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    @Transactional
+    public Personagem save(Personagem p) {
+        return repository.save(p);
+    }
 
 }

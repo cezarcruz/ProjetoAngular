@@ -21,32 +21,34 @@ import br.com.cezarcruz.service.PersonagemService;
 @RequestMapping(value = "/home")
 public class HomeController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
-	private final PersonagemService personagemService;
-	
-	@Inject
-	public HomeController(final PersonagemService personagemService) {
-		this.personagemService = personagemService;
-	}
-	
-	@RequestMapping("/oi")
-	public Personagem oi() {
-		return new Personagem("Jhon", "Ninja");
-	}
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
+    private final PersonagemService personagemService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/post", consumes = { "application/json" })
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody HttpStatus teste(@RequestBody Personagem p,
-			HttpServletRequest request, HttpServletResponse response) {
-		return HttpStatus.OK;
-	}
+    @Inject
+    public HomeController(final PersonagemService personagemService) {
+        this.personagemService = personagemService;
+    }
 
-	@RequestMapping(method = RequestMethod.POST, value = "/tratastr", consumes = { "application/json" })
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody String toUpper(@RequestBody Personagem p,
-			HttpServletRequest request, HttpServletResponse response) {
-		personagemService.save(p);
-		LOGGER.info("Personagem salvo com sucesso");
-		return p.toUpperString();
-	}
+    @RequestMapping("/oi")
+    public Personagem oi() {
+        return new Personagem("Jhon", "Ninja");
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/post", consumes = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    HttpStatus teste(@RequestBody Personagem p,
+            HttpServletRequest request, HttpServletResponse response) {
+        return HttpStatus.OK;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/tratastr", consumes = {"application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    String toUpper(@RequestBody Personagem p,
+            HttpServletRequest request, HttpServletResponse response) {
+        personagemService.save(p);
+        LOGGER.info("Personagem salvo com sucesso");
+        return p.toUpperString();
+    }
 }
