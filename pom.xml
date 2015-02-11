@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.10.RELEASE</version>
+		<version>1.2.1.RELEASE</version>
 	</parent>
 
 	<dependencies>
@@ -31,20 +31,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<start-class>br.com.associados.Application</start-class>
+		<start-class>br.com.cezarcruz.Application</start-class>
 	</properties>
 
 	<repositories>
