@@ -3,15 +3,21 @@ package br.com.cezarcruz.controllers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.models.Seriado;
+import br.com.cezarcruz.models.json.request.SeriadoRequest;
 import br.com.cezarcruz.repository.SeriadoRepository;
 
 @RestController
@@ -26,10 +32,25 @@ public class SeriadoController {
 		return "Cadastro de seriados";
 	}
 	
+	/**
+	 * Responde a chamada do /add
+	 * @param request objeto com os dados que serão inseridos
+	 * @param result resultado da validação
+	 * @return retorna sucesso.
+	 * @throws BusinessException 
+	 * @throws Exception 
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)//TODO: trocar para um PUT
-	public @ResponseBody Seriado insert(@RequestBody Seriado seriado) {
-		repository.save(seriado);
-		return seriado;
+	public @ResponseBody Seriado insert(@Valid @RequestBody SeriadoRequest request, 
+			BindingResult result,
+			Locale locale) throws BusinessException {
+		
+		if (result.hasErrors()) {
+			throw new BusinessException(result.getAllErrors());
+		}
+		
+		repository.save(request.getSeriado());
+		return request.getSeriado();
 	}
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)

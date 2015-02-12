@@ -5,6 +5,8 @@ angular.module('app').controller('SeriadosCtrl', ['$scope', 'SeriadoService', fu
 	$scope.save = function(nome, temporada) {
 		SeriadoService.saveSeriado(nome, temporada).success(function(data){
 			alert("Seriado " + nome + " Salvo");
+		}).error(function(data) {
+			alert(data);
 		});
 	}
 }]);
