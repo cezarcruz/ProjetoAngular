@@ -1,5 +1,7 @@
 package br.com.cezarcruz.models.json.request;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.cezarcruz.models.Seriado;
@@ -14,7 +16,7 @@ public class SeriadoRequest {
 	@NotEmpty(message = "O nome não pode ser vazio")
 	private String nome;
 	
-	@NotEmpty(message = "A temporada não pode ser vazia")
+	@NotNull(message = "A temporada não pode ser vazia")
 	private Integer temporada;
 
 	public String getNome() {

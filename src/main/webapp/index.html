@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Titulo</title>
-		<script type="text/javascript" src="js/libs/angular.js"></script>
-		<script type="text/javascript" src="js/libs/angular-ui-router.js"></script>
-		<script type="text/javascript" src="js/libs/jquery-2.1.3.js"></script>
-		<script type="text/javascript" src="js/libs/bootstrap.js"></script>
-		<script type="text/javascript" src="js/app/app.js"></script>
-		<script type="text/javascript" src="js/app/seriados/seriados.controller.js"></script>
-		<script type="text/javascript" src="js/app/seriados/seriados.service.js"></script>
-		<link rel="stylesheet" href="css/bootstrap.css"/>
-	</head>
-	<body data-ng-app="app">
-		<div data-ng-controller="SeriadosCtrl" >
-			<input type="text" data-ng-model="nome" placeholder="nome">
-			<input type="text" data-ng-model="temporada" placeholder="temporada">
-			<input type="button" data-ng-click="save(nome, temporada)" value="Salvar"> 
-		</div>
-		
-	</body>
+    <head>
+        <title>Titulo</title>
+        <script type="text/javascript" src="js/libs/angular.js"></script>
+        <script type="text/javascript" src="js/libs/angular-ui-router.js"></script>
+        <script type="text/javascript" src="js/libs/ui-bootstrap-tpls-0.12.0.js"></script>
+        <script type="text/javascript" src="js/libs/jquery-2.1.3.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.js"></script>
+        <script type="text/javascript" src="js/app/app.js"></script>
+        <script type="text/javascript" src="js/app/seriados/seriados.controller.js"></script>
+        <script type="text/javascript" src="js/app/seriados/seriados.service.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+    <body data-ng-app="app">
+        
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li data-ui-sref-active="active"><a data-ui-sref="home">Home</a></li>
+                        <li data-ui-sref-active="active">
+                            <a data-ui-sref="seriados">Seriados</a>
+                        </li>                        
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container">
+        	<section data-ui-view></section>
+       	</div>		
+    </body>
 </html>

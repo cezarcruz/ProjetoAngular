@@ -1,0 +1,14 @@
+<div data-ng-controller="SeriadosCtrl" >
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+	<form>			
+	  	<div class="form-group">
+	  		<label>Nome do seriado</label>
+		    <input type="text" class="form-control" data-ng-model="nome" placeholder="nome">
+		</div>
+		<div class="form-group">
+	  		<label>Temporada atual</label>
+		    <input type="text" class="form-control" data-ng-model="temporada" placeholder="temporada">
+		</div>	    		    
+		<input type="button" class="btn btn-default" data-ng-click="save(nome, temporada)" value="Salvar"> 	
+	</form>
+</div>
