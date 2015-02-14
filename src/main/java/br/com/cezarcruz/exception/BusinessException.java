@@ -27,6 +27,7 @@ public class BusinessException extends Exception {
 		for (ObjectError e : validationsErrors) {
 			ErrorInfo eInf = new ErrorInfo(e.getCode(), e.getDefaultMessage());
 			errors.add(eInf);
+            //return;
 		}
 	}
 	

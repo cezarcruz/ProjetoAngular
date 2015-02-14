@@ -13,6 +13,7 @@ public class Seriado {
 	private Integer temporada;
 
 	public Seriado() {}
+
 	public Seriado(String nome, Integer temporada) {
 		this.nome = nome;
 		this.temporada = temporada;
