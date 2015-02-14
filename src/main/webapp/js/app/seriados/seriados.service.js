@@ -1,6 +1,11 @@
-angular.module('app').factory('SeriadoService', ['$http', function SeriadoService($http){
+meuApp.factory('SeriadoService', ['$http', 
+                                                 'SiteUrl', 
+                                                 function SeriadoService($http, 
+                                                		 SiteUrl){
+	
+	//faz a chama ao serviço que adicona um seriado na base.
 	SeriadoService.saveSeriado = function(nome, temporada) {
-		return $http.post('http://localhost:8080/seriados/add', { nome : nome, temporada : temporada});
+		return $http.post(SiteUrl.map.baseUrl + '/seriados/add', { nome : nome, temporada : temporada});
 	}
 	
 	return SeriadoService;
