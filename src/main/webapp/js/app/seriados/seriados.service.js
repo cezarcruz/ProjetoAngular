@@ -8,5 +8,9 @@ meuApp.factory('SeriadoService', ['$http',
 		return $http.post(SiteUrl.map.baseUrl + '/seriados/add', { nome : nome, temporada : temporada});
 	}
 	
+	//busca todos os seriados cadastrados no sistema.
+	SeriadoService.getAllSeriados = function() {
+		return $http.get(SiteUrl.map.baseUrl + '/seriados/list');
+	}
 	return SeriadoService;
 }])

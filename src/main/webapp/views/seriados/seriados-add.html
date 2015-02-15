@@ -3,12 +3,19 @@
 	<form>			
 	  	<div class="form-group">
 	  		<label>Nome do seriado</label>
-		    <input type="text" class="form-control" data-ng-model="nome" placeholder="nome">
+		    <input type="text" class="form-control" data-ng-model="nome" placeholder="Nome">
 		</div>
 		<div class="form-group">
 	  		<label>Temporada atual</label>
-		    <input type="text" class="form-control" data-ng-model="temporada" placeholder="temporada">
+		    <input type="text" class="form-control" data-ng-model="temporada" placeholder="Temporada">
 		</div>	    		    
 		<input type="button" class="btn btn-default" data-ng-click="save(nome, temporada)" value="Salvar"> 	
 	</form>
+	<hr>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="seriado in seriados">
+			{{ seriado.nome }}
+			<span class="badge">{{ seriado.temporada }}</span>
+		</li>
+	</ul>
 </div>
