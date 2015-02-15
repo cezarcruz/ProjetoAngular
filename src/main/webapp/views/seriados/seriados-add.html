@@ -1,21 +1,34 @@
-<div data-ng-controller="SeriadosCtrl" >
-	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-	<form>			
-	  	<div class="form-group">
-	  		<label>Nome do seriado</label>
-		    <input type="text" class="form-control" data-ng-model="nome" placeholder="Nome">
+<div data-ng-controller="SeriadosCtrl">
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+		close="closeAlert($index)">{{alert.msg}}</alert>
+	<form>
+		<div class="form-group">
+			<label>Nome do seriado</label> <input type="text"
+				class="form-control" data-ng-model="nome" placeholder="Nome">
 		</div>
 		<div class="form-group">
-	  		<label>Temporada atual</label>
-		    <input type="text" class="form-control" data-ng-model="temporada" placeholder="Temporada">
-		</div>	    		    
-		<input type="button" class="btn btn-default" data-ng-click="save(nome, temporada)" value="Salvar"> 	
+			<label>Temporada atual</label> <input type="text"
+				class="form-control" data-ng-model="temporada"
+				placeholder="Temporada">
+		</div>
+		<input type="button" class="btn btn-default"
+			data-ng-click="save(nome, temporada)" value="Salvar">
 	</form>
 	<hr>
-	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="seriado in seriados">
-			{{ seriado.nome }}
-			<span class="badge">{{ seriado.temporada }}</span>
-		</li>
-	</ul>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Temporada</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="seriado in seriados">
+				<td>{{ seriado.nome }}</td>
+				<td>{{ seriado.temporada }}</td>
+				<td>E, <a href="#" ng-click="excluir(seriado)">X</a> </td>
+			</tr>
+		</tbody>
+	</table>
 </div>

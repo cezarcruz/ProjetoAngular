@@ -12,5 +12,9 @@ meuApp.factory('SeriadoService', ['$http',
 	SeriadoService.getAllSeriados = function() {
 		return $http.get(SiteUrl.map.baseUrl + '/seriados/list');
 	}
+	
+	SeriadoService.deleteSeriadoById = function(id) {
+		return $http.get(SiteUrl.map.baseUrl + "/seriados/delete/" + String(id));
+	}
 	return SeriadoService;
 }])
