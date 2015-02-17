@@ -1,7 +1,7 @@
 /**
  * 
  */
-var meuApp = angular.module('app', [ 'ui.router', 'ui.bootstrap' ]);
+var meuApp = angular.module('app', [ 'ui.router', 'ui.bootstrap', 'ui.mask' ]);
 // Configura a url do servidor, pois pode mudar de uma pro outro.
 meuApp.run([
 		'$rootScope',
