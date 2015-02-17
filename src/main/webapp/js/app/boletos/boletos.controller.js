@@ -13,13 +13,16 @@ meuApp.controller('BoletoCtrl', [ '$scope', function($scope) {
 		var dv3 = barcode.substring(35, 36);
 		var bloco4 = barcode.substring(36, 47);
 		var dv4 = barcode.substring(47, 48);
-
+		
+		var barcodeSemDvs = bloco1 + bloco2 + bloco3 + bloco4;	
+		
 		if (bloco1.charAt(2) == "6" || bloco1.charAt(2) == "7") { // dac10
 			if (validarPorBlocoDac10(bloco1, dv1)) {
 				if (validarPorBlocoDac10(bloco2, dv2)) {
 					if (validarPorBlocoDac10(bloco3, dv3)) {
 						if (validarPorBlocoDac10(bloco4, dv4)) {
 							alert("Código por bloco é valido")
+							alert(validaBlocoTodoDac10(barcodeSemDvs));
 						} else {
 							alert("Bloco 4 invalido");
 						}
@@ -38,6 +41,7 @@ meuApp.controller('BoletoCtrl', [ '$scope', function($scope) {
 					if (validarPorBlocoDac11(bloco3, dv3)) {
 						if (validarPorBlocoDac11(bloco4, dv4)) {
 							alert("Código por bloco é valido")
+							validaBlocoTodoDac11(barcodeSemDvs);
 						} else {
 							alert("Bloco 4 invalido");
 						}
@@ -54,6 +58,60 @@ meuApp.controller('BoletoCtrl', [ '$scope', function($scope) {
 
 		// validarPorBlocoDac11(barcode.substring(0, 11), barcode.substring(11,
 		// 12));
+	}
+
+	function validaBlocoTodoDac11(bloco) {
+		var dv = bloco.charAt(3);
+		bloco = bloco.slice(0, 3) + bloco.slice(4); //remove o bloco validador
+		var blocoArr = bloco.split("");// transforma o bloco em array.
+		var total = 0;
+		total += (blocoArr[0] * 4);
+		total += (blocoArr[1] * 3);
+		total += (blocoArr[2] * 2);
+		total += (blocoArr[3] * 9);
+		total += (blocoArr[4] * 8);
+		total += (blocoArr[5] * 7);
+		total += (blocoArr[6] * 6);
+		total += (blocoArr[7] * 5);
+		total += (blocoArr[8] * 4);
+		total += (blocoArr[9] * 3);
+		total += (blocoArr[10] * 2);
+
+		var dac11 = total % 11;
+		return dac11 == dv;
+	}
+	
+	function validaBlocoTodoDac10(bloco) {
+		var dv = bloco.charAt(3);
+		bloco = bloco.slice(0, 3) + bloco.slice(4);
+		alert("Dv = " + dv);
+		blocoArr = bloco.split(""); // transformo o bloco em array.
+		var arrSoma = [];
+		for (i = 0; i < blocoArr.length; i++) {
+			if (i % 2 == 0) {
+				arrSoma[i] = blocoArr[i] * 2;
+			} else {
+				arrSoma[i] = blocoArr[i] * 1;
+			}
+		}
+		arrSoma1Digito = [];
+		for (i = 0; i < arrSoma.length; i++) {
+			// arrSoma1Digito.push(arrSoma[i].split(""));
+			var verifyDigits = arrSoma[i].toString().split("");
+
+			if (verifyDigits.toString().split("").length > 1) {
+				arrSoma1Digito.push(verifyDigits[0]);
+				arrSoma1Digito.push(verifyDigits[1]);
+			} else {
+				arrSoma1Digito.push(verifyDigits[0]);
+			}
+		}
+		var total = 0;
+		for (i = 0; i < arrSoma1Digito.length; i++) {
+			total += parseInt(arrSoma1Digito[i]);
+		}
+		var dac10 = 10 - (total % 10);
+		return dac10 == dv;
 	}
 	
 	/**
