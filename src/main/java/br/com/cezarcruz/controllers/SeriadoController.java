@@ -5,14 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -70,8 +71,8 @@ public class SeriadoController {
 	 * Deleta um seriado by ID
 	 * @param id
 	 */
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)//TODO Arrumar isso.
-	public void delete(@RequestParam String id) {//TODO: ajustar para a forma correta
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)//TODO Arrumar isso.
+	public void delete(HttpServletRequest request, @PathVariable("id") String id) {//TODO: ajustar para a forma correta
 		repository.delete(Long.parseLong(id));
 	}
 	

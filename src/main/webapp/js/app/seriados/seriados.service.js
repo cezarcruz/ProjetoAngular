@@ -14,7 +14,8 @@ meuApp.factory('SeriadoService', ['$http',
 	}
 	
 	SeriadoService.deleteSeriadoById = function(id) {
-		return $http.get(SiteUrl.map.baseUrl + "/seriados/delete/" + String(id));
+		//return $http(url : SiteUrl.map.baseUrl + "/seriados/delete" , method : 'DELETE', {id : id});
+		return $http.delete(SiteUrl.map.baseUrl + "/seriados/delete/" + id.toString());
 	}
 	return SeriadoService;
 }])
