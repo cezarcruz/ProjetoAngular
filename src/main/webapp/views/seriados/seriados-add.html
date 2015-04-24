@@ -1,6 +1,6 @@
-<div data-ng-controller="SeriadosCtrl">
-	<alert ng-repeat="alert in alerts" type="{{alert.type}}"
-		close="closeAlert($index)">{{alert.msg}}</alert>
+<div>
+	<alert ng-repeat="alert in vm.alerts" type="{{vm.alert.type}}"
+		close="closeAlert($index)">{{vm.alert.msg}}</alert>
 	<form>
 		<div class="form-group">
 			<label>Nome do seriado</label> <input type="text"
@@ -12,7 +12,7 @@
 				placeholder="Temporada">
 		</div>
 		<input type="button" class="btn btn-default"
-			data-ng-click="save(nome, temporada)" value="Salvar">
+			data-ng-click="vm.save(nome, temporada)" value="Salvar">
 	</form>
 	<hr>
 	<table class="table table-hover">
@@ -24,10 +24,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="seriado in seriados">
+			<tr ng-repeat="seriado in vm.seriados">
 				<td>{{ seriado.nome }}</td>
 				<td>{{ seriado.temporada }}</td>
-				<td>E, <a href="#" ng-click="excluir(seriado)">X</a> </td>
+				<td>E, <a href="#" ng-click="vm.excluir(seriado)">X</a> </td>
 			</tr>
 		</tbody>
 	</table>

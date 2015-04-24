@@ -1,21 +1,27 @@
-meuApp.factory('SeriadoService', ['$http', 
-                                                 'SiteUrl', 
-                                                 function SeriadoService($http, 
-                                                		 SiteUrl){
-	
-	//faz a chama ao serviço que adicona um seriado na base.
-	SeriadoService.saveSeriado = function(nome, temporada) {
-		return $http.post(SiteUrl.map.baseUrl + '/seriados/add', { nome : nome, temporada : temporada});
-	}
-	
-	//busca todos os seriados cadastrados no sistema.
-	SeriadoService.getAllSeriados = function() {
-		return $http.get(SiteUrl.map.baseUrl + '/seriados/list');
-	}
-	
-	SeriadoService.deleteSeriadoById = function(id) {
-		//return $http(url : SiteUrl.map.baseUrl + "/seriados/delete" , method : 'DELETE', {id : id});
-		return $http.delete(SiteUrl.map.baseUrl + "/seriados/delete/" + id.toString());
-	}
-	return SeriadoService;
-}])
+(function(){
+	angular.module('app.seriado').factory('SeriadoService', ['$http', 'UrlService', SeriadoService]);
+		
+	function SeriadoService($http, UrlService) {
+		
+		var service = {
+			saveSeriado : saveSeriado,
+			getAllSeriados : getAllSeriados,
+			deleteSeriadoById : deleteSeriadoById
+		};
+		
+		return service;
+		
+		function saveSeriado(nome, temporada) {
+			return $http.post(UrlService.getSiteUrl() + 'seriados/add', { nome : nome, temporada : temporada});
+		}
+		
+		//busca todos os seriados cadastrados no sistema.
+		function getAllSeriados() {
+			return $http.get(UrlService.getSiteUrl() + 'seriados/list');
+		}
+		
+		function deleteSeriadoById(id) {
+			return $http.delete(UrlService.getSiteUrl() + "seriados/delete/" + id.toString());
+		}
+	}	
+})();

@@ -1,12 +1,16 @@
-meuApp.controller('ModalInstanceCtrl', function($scope, $modalInstance, mensagem, titulo) {
-	$scope.mensagem = mensagem;
-	$scope.titulo = titulo;
+(function() {
+	angular.module('app').controller('ModalInstanceCtrl', ModalInstanceCtrl); 
 	
-	$scope.ok = function() {
-		$modalInstance.close(1);
+	function ModalInstanceCtrl($scope, $modalInstance, mensagem, titulo) {
+		$scope.mensagem = mensagem;
+		$scope.titulo = titulo;
+		
+		$scope.ok = function() {
+			$modalInstance.close(1);
+		}
+		
+		$scope.cancel = function() {
+			$modalInstance.dismiss('cancel');
+		}
 	}
-	
-	$scope.cancel = function() {
-		$modalInstance.dismiss('cancel');
-	}
-})
+})();

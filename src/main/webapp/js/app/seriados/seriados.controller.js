@@ -1,69 +1,70 @@
-/**
- * Controller do seriados.
- */
-meuApp.controller('SeriadosCtrl', [
-		'$scope',
-		'SeriadoService',
-		'$modal',
-		function($scope,
-				 SeriadoService,
-				 $modal) {
-			$scope.alerts = [];
-			$scope.seriados = [];// seriados vindo do servidor.
+(function() {
+	/**
+	 * Controller do seriados.
+	 */
+angular.module('app.seriado').controller('SeriadosCtrl', ['$location', 'SeriadoService','$modal', SeriadosCtrl]);
 
-			$scope.save = function(nome, temporada) {
-				SeriadoService.saveSeriado(nome, temporada).success(
-						function(data) {
-							$scope.alerts.push({
-								type : 'success',
-								msg : 'O Seriado foi adicionado com sucesso.'
-							});
-							$scope.getSeriados();
-							$scope.nome = "";
-							$scope.temporada = "";
-						}).error(function(data) {
-					$scope.alerts.push({
-						type : 'danger',
-						msg : data[0].message
-					});
+	function SeriadosCtrl($location, SeriadoService, $modal) {
+		//view model
+		var vm = this;		
+		vm.alerts = [];
+		vm.seriados = [];// seriados vindo do servidor.
+
+		vm.save = function(nome, temporada) {
+			SeriadoService.saveSeriado(nome, temporada).success(
+					function(data) {
+						vm.alerts.push({
+							type : 'success',
+							msg : 'O Seriado foi adicionado com sucesso.'
+						});
+						vm.getSeriados();
+						vm.nome = "";
+						vm.temporada = "";
+					}).error(function(data) {
+				vm.alerts.push({
+					type : 'danger',
+					msg : data[0].message
 				});
-			}
+			});
+		}
 
-			$scope.closeAlert = function(index) {
-				$scope.alerts.splice(index, 1);
-			};
+		vm.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
 
-			$scope.getSeriados = function() {
-				// ao carregar o controller faz a busca de todos os seriados.
-				SeriadoService.getAllSeriados().success(function(data) {
-					$scope.seriados = data;
-				});
-			}
-			$scope.excluir = function(seriado) {
-				var modalInstance = $modal.open({
-					templateUrl : 'views/commons/common-modal.html',
-					controller : 'ModalInstanceCtrl',
-					resolve : {
-						mensagem : function() {
-							return "Deseja excluir esse seriado "
-									+ seriado.nome + "?";
-						},
-						titulo : function() {
-							return "Confirmar exclusão";
-						}
+		vm.getSeriados = function() {
+			// ao carregar o controller faz a busca de todos os seriados.
+			SeriadoService.getAllSeriados().success(function(data) {
+				vm.seriados = data;
+			});
+		}
+		
+		vm.excluir = function(seriado) {
+			var modalInstance = $modal.open({
+				templateUrl : 'views/commons/common-modal.html',
+				controller : 'ModalInstanceCtrl',
+				resolve : {
+					mensagem : function() {
+						return "Deseja excluir esse seriado "
+								+ seriado.nome + "?";
+					},
+					titulo : function() {
+						return "Confirmar exclusão";
 					}
-				});
+				}
+			});
 
-				modalInstance.result.then(function() {
-					// aqui executa o código do ok.
-					SeriadoService.deleteSeriadoById(seriado.id).success(
-							function(data) {
-								alert("excluido");
-								$scope.getSeriados();
-							})
+			modalInstance.result.then(function() {
+				// aqui executa o código do ok.
+				SeriadoService.deleteSeriadoById(seriado.id).success(
+					function(data) {							
+						vm.getSeriados();
+					})
 				}, function() {
-					// aqui o codigo do cancel.
+					// 	aqui o codigo do cancel.
 				});
-			};
-			$scope.getSeriados();
-		} ]);
+		};
+		
+		vm.getSeriados();
+	}
+})();
