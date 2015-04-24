@@ -2,7 +2,9 @@
 	/**
 	 * Controller do seriados.
 	 */
-angular.module('app.seriado').controller('SeriadosCtrl', ['$location', 'SeriadoService','$modal', SeriadosCtrl]);
+angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
+
+	SeriadosCtrl.$inject = ['$location', 'SeriadoService','$modal'];
 
 	function SeriadosCtrl($location, SeriadoService, $modal) {
 		//view model
@@ -29,7 +31,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', ['$location', 'SeriadoS
 		}
 
 		vm.closeAlert = function(index) {
-			$scope.alerts.splice(index, 1);
+			vm.alerts.splice(index, 1);
 		};
 
 		vm.getSeriados = function() {

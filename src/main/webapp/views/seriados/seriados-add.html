@@ -1,18 +1,18 @@
 <div>
-	<alert ng-repeat="alert in vm.alerts" type="{{vm.alert.type}}"
-		close="closeAlert($index)">{{vm.alert.msg}}</alert>
+	<alert ng-repeat="alert in vm.alerts" type="{{alert.type}}"
+		close="vm.closeAlert($index)">{{alert.msg}}</alert>
 	<form>
 		<div class="form-group">
 			<label>Nome do seriado</label> <input type="text"
-				class="form-control" data-ng-model="nome" placeholder="Nome">
+				class="form-control" data-ng-model="vm.nome" placeholder="Nome">
 		</div>
 		<div class="form-group">
 			<label>Temporada atual</label> <input type="text"
-				class="form-control" data-ng-model="temporada"
+				class="form-control" data-ng-model="vm.temporada"
 				placeholder="Temporada">
 		</div>
 		<input type="button" class="btn btn-default"
-			data-ng-click="vm.save(nome, temporada)" value="Salvar">
+			data-ng-click="vm.save(vm.nome, vm.temporada)" value="Salvar">
 	</form>
 	<hr>
 	<table class="table table-hover">

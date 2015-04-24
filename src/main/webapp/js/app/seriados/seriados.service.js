@@ -1,6 +1,8 @@
 (function(){
-	angular.module('app.seriado').factory('SeriadoService', ['$http', 'UrlService', SeriadoService]);
-		
+	angular.module('app.seriado').factory('SeriadoService', SeriadoService);
+
+	SeriadoService.$inject = ['$http', 'UrlService'];
+
 	function SeriadoService($http, UrlService) {
 		
 		var service = {
