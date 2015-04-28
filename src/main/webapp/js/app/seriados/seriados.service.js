@@ -13,8 +13,12 @@
 		
 		return service;
 		
-		function saveSeriado(nome, temporada) {
-			return $http.post(UrlService.getSiteUrl() + 'seriados/add', { nome : nome, temporada : temporada});
+		function saveSeriado(nome, temporada, id) {
+			if (id) {
+				return $http.put(UrlService.getSiteUrl() + 'seriados/update', {nome : nome, temporada : temporada, id : id});
+			} else {
+				return $http.post(UrlService.getSiteUrl() + 'seriados/add', { nome : nome, temporada : temporada});
+			}
 		}
 		
 		//busca todos os seriados cadastrados no sistema.

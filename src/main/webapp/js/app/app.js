@@ -1,5 +1,5 @@
 (function() {
-	angular.module('app', [ 'ui.router', 'ui.bootstrap', 'app.seriado', 'app.urls']);
+	angular.module('app', [ 'ui.router', 'ui.bootstrap', 'app.seriado', 'app.configs']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);

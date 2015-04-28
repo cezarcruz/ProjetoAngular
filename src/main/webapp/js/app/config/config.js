@@ -1,3 +1,3 @@
 (function() {
-	angular.module("app.urls", []);
+	angular.module("app.configs", ['app.urls']);
 })();

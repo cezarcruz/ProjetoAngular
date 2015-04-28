@@ -8,19 +8,30 @@ import br.com.cezarcruz.models.Seriado;
 
 /**
  * Esse é o contrato com a view.
+ * 
  * @author ccruz
  *
  */
 public class SeriadoRequest {
-	
+
+	private Long id;
+
 	@NotEmpty(message = "O nome não pode ser vazio")
 	private String nome;
-	
+
 	@NotNull(message = "A temporada não pode ser vazia")
 	private Integer temporada;
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setNome(String nome) {
@@ -34,13 +45,14 @@ public class SeriadoRequest {
 	public void setTemporada(Integer temporada) {
 		this.temporada = temporada;
 	}
-	
+
 	/**
 	 * Retorna uma instancia de seriado.
+	 * 
 	 * @return
 	 */
 	public Seriado getSeriado() {
-		return new Seriado(this.getNome(), this.getTemporada());
+		return new Seriado(this.getNome(), this.getTemporada(), this.getId());
 	}
 
 }

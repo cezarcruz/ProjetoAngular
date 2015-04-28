@@ -1,5 +1,5 @@
 (function() {
-	angular.module("app.urls").factory('UrlService', [UrlService]);
+	angular.module("app.urls", []).factory('UrlService', [UrlService]);
 	function UrlService() {
 		var service = {
 			setSiteUrl : setSiteUrl,

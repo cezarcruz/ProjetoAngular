@@ -11,8 +11,11 @@
 				class="form-control" data-ng-model="vm.temporada"
 				placeholder="Temporada">
 		</div>
+		<input ng-if="vm.isEditing" type="button" class="btn btn-danger"
+			data-ng-click="vm.cancel()" value="Cancelar">
 		<input type="button" class="btn btn-default"
 			data-ng-click="vm.save(vm.nome, vm.temporada)" value="Salvar">
+			
 	</form>
 	<hr>
 	<table class="table table-hover">
@@ -27,7 +30,7 @@
 			<tr ng-repeat="seriado in vm.seriados">
 				<td>{{ seriado.nome }}</td>
 				<td>{{ seriado.temporada }}</td>
-				<td>E, <a href="#" ng-click="vm.excluir(seriado)">X</a> </td>
+				<td><a data-ui-sref="seriados" class="btn btn-btn-danger" data-ng-click="vm.editar(seriado)">E</a> <a class="btn btn-danger" data-ui-sref="seriados" data-ng-click="vm.excluir(seriado)">X</a> </td>
 			</tr>
 		</tbody>
 	</table>

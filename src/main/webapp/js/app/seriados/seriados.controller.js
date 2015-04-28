@@ -11,17 +11,17 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 		var vm = this;		
 		vm.alerts = [];
 		vm.seriados = [];// seriados vindo do servidor.
+		vm.isEditing = false;
 
 		vm.save = function(nome, temporada) {
-			SeriadoService.saveSeriado(nome, temporada).success(
+			SeriadoService.saveSeriado(nome, temporada, vm.id).success(
 					function(data) {
 						vm.alerts.push({
 							type : 'success',
-							msg : 'O Seriado foi adicionado com sucesso.'
+							msg : 'O Seriado foi salvo com sucesso.'
 						});
 						vm.getSeriados();
-						vm.nome = "";
-						vm.temporada = "";
+						clear();
 					}).error(function(data) {
 				vm.alerts.push({
 					type : 'danger',
@@ -38,7 +38,16 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 			// ao carregar o controller faz a busca de todos os seriados.
 			SeriadoService.getAllSeriados().success(function(data) {
 				vm.seriados = data;
+			}).error(function(data) {
+				alert(data);
 			});
+		}
+		
+		vm.editar = function(seriado) {			
+			vm.nome = seriado.nome;
+			vm.temporada = seriado.temporada;
+			vm.id = seriado.id;
+			vm.isEditing = true;
 		}
 		
 		vm.excluir = function(seriado) {
@@ -66,6 +75,17 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 					// 	aqui o codigo do cancel.
 				});
 		};
+		
+		vm.cancel = function() {
+			clear();
+		}
+		
+		function clear() {
+			vm.nome = undefined;
+			vm.temporada = undefined;
+			vm.id = undefined;
+			vm.isEditing = undefined;
+		}
 		
 		vm.getSeriados();
 	}

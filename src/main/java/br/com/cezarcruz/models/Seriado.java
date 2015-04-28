@@ -14,9 +14,10 @@ public class Seriado {
 
 	public Seriado() {}
 
-	public Seriado(String nome, Integer temporada) {
+	public Seriado(String nome, Integer temporada, Long id) {
 		this.nome = nome;
 		this.temporada = temporada;
+		this.id = id;
 	}
 	
 	public Long getId() {

@@ -76,4 +76,23 @@ public class SeriadoController {
 		repository.delete(Long.parseLong(id));
 	}
 	
+	/**
+	 * Atualizar um seriado
+	 * @param request
+	 * @param result
+	 * @param locale
+	 * @throws BusinessException
+	 */
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public void update(@Valid @RequestBody SeriadoRequest request, 
+						BindingResult result,
+						Locale locale) throws BusinessException {
+
+		if (result.hasErrors()) {
+			throw new BusinessException(result.getAllErrors());
+		}
+		
+		repository.save(request.getSeriado());
+	}
+	
 }
