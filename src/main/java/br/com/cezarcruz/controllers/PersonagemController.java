@@ -31,7 +31,10 @@ public class PersonagemController {
      * @throws BusinessException
      */
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public void insert(@Valid @RequestBody PersonagemRequest personagemRequest, BindingResult result, Locale locale) throws BusinessException {
+    public void insert(@Valid @RequestBody PersonagemRequest personagemRequest, 
+                        BindingResult result, 
+                        Locale locale) throws BusinessException {
+        
         if (result.hasErrors()) {
             throw new BusinessException(result.getAllErrors());
         }

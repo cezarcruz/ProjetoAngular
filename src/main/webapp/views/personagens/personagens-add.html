@@ -1,0 +1,17 @@
+<div>
+    <form>
+        <div class="form-group">
+            <label>Nome</label> 
+            <input type="text" class="form-control" data-ng-model="vm.nome" placeholder="Nome">
+        </div>
+        <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" data-ng-model="vm.sobrenome" placeholder="Sobrenome">
+        </div>
+        <div class="form-group">
+            <label>Idade</label>
+            <input type="text" class="form-control" data-ng-model="vm.idade" placeholder="Idade">
+        </div>
+        <input type="button" class="btn btn-danger" data-ng-click="vm.save(vm.nome, vm.sobrenome, vm.idade)" value="Salvar">
+    </form>
+</div>
