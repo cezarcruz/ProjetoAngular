@@ -4,16 +4,16 @@
 	 */
 angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 
-	SeriadosCtrl.$inject = ['$location', 'SeriadoService','$modal'];
+	SeriadosCtrl.$inject = ['$location', 'SeriadoService','$modal', '$http'];
 
-	function SeriadosCtrl($location, SeriadoService, $modal) {
+	function SeriadosCtrl($location, SeriadoService, $modal, $http) {
 		//view model
 		var vm = this;		
 		vm.alerts = [];
 		vm.seriados = [];// seriados vindo do servidor.
 		vm.isEditing = false;
 
-		vm.save = function(nome, temporada) {
+		vm.save = function(nome, temporada) {			
 			SeriadoService.saveSeriado(nome, temporada, vm.id).success(
 					function(data) {
 						vm.alerts.push({

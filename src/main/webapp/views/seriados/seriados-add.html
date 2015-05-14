@@ -11,6 +11,7 @@
 				class="form-control" data-ng-model="vm.temporada"
 				placeholder="Temporada">
 		</div>
+		<file-upload file="vm.file"></file-upload>
 		<input ng-if="vm.isEditing" type="button" class="btn btn-danger"
 			data-ng-click="vm.cancel()" value="Cancelar">
 		<input type="button" class="btn btn-default"

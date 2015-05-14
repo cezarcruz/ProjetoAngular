@@ -1,3 +1,3 @@
 (function(){
-	angular.module('app.seriado', []);
+	angular.module('app.seriado', ['app.upload']);
 })();

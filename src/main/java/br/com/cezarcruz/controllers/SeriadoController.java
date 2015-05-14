@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.models.Seriado;
+import br.com.cezarcruz.models.json.request.MultiPartFileUpload;
 import br.com.cezarcruz.models.json.request.SeriadoRequest;
 import br.com.cezarcruz.repository.SeriadoRepository;
 
@@ -93,6 +97,23 @@ public class SeriadoController {
 		}
 		
 		repository.save(request.getSeriado());
+	}
+	
+	@RequestMapping(value = "/upload", method=RequestMethod.POST)
+	public @ResponseBody List<String> handleFileUpload(MultiPartFileUpload file, BindingResult bindingResult, Model model) {
+		if (file.getFiles().isEmpty()) {
+			try {
+				List<String> result = new ArrayList<String>();
+				for (MultipartFile f : file.getFiles()) {
+					result.add(f.getName());
+				}
+				return result;
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		return null;
 	}
 	
 }
