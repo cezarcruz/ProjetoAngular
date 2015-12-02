@@ -47,7 +47,7 @@ public class SeriadoController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)//TODO: trocar para um PUT
-	public @ResponseBody Seriado insert(@Valid @RequestBody SeriadoRequest request, 
+	public Seriado insert(@Valid @RequestBody SeriadoRequest request,
 			BindingResult result,
 			Locale locale) throws BusinessException {
 		
