@@ -1,3 +1,5 @@
+https://travis-ci.org/cezarcruz/ProjetoAngular.svg?branch=master
+
 ProjetoAngular
 ==============
 
