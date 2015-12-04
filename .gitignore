@@ -11,3 +11,4 @@ target
 src/main/webapp/vendor
 .gradle
 build
+node_modules
