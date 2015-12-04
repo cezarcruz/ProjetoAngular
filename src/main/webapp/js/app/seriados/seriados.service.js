@@ -13,21 +13,20 @@
 		
 		return service;
 		
-		function saveSeriado(nome, temporada, id) {
+		function saveSeriado(name, season, id) {
 			if (id) {
-				return $http.put(UrlService.getSiteUrl() + 'seriados/update', {nome : nome, temporada : temporada, id : id});
+				return $http.put(UrlService.getSiteUrl() + 'series/update', {name : name, season : season, id : id});
 			} else {
-				return $http.post(UrlService.getSiteUrl() + 'seriados/add', { nome : nome, temporada : temporada});
+				return $http.post(UrlService.getSiteUrl() + 'series/add', { name : name, season : season});
 			}
 		}
-		
-		//busca todos os seriados cadastrados no sistema.
+
 		function getAllSeriados() {
-			return $http.get(UrlService.getSiteUrl() + 'seriados/list');
+			return $http.get(UrlService.getSiteUrl() + 'series/list');
 		}
 		
 		function deleteSeriadoById(id) {
-			return $http.delete(UrlService.getSiteUrl() + "seriados/delete/" + id.toString());
+			return $http.delete(UrlService.getSiteUrl() + "series/delete/" + id.toString());
 		}
 	}	
 })();

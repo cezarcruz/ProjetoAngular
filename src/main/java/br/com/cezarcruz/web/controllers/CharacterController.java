@@ -1,8 +1,8 @@
-package br.com.cezarcruz.controllers;
+package br.com.cezarcruz.web.controllers;
 
 import br.com.cezarcruz.exception.BusinessException;
-import br.com.cezarcruz.models.json.request.PersonagemRequest;
-import br.com.cezarcruz.repository.PersonagemRepository;
+import br.com.cezarcruz.web.json.CharacterRequest;
+import br.com.cezarcruz.data.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,21 +17,21 @@ import java.util.Locale;
  * Created by cezar on 28/04/15.
  */
 @RestController
-@RequestMapping(value = "/personagens")
-public class PersonagemController {
+@RequestMapping(value = "/characters")
+public class CharacterController {
 
     @Autowired
-    private PersonagemRepository personagemRepository;
+    private CharacterRepository characterRepository;
 
     /**
      * Controller que insere um novo personagem
-     * @param personagemRequest
+     * @param characterRequest
      * @param result
      * @param locale
      * @throws BusinessException
      */
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public void insert(@Valid @RequestBody PersonagemRequest personagemRequest, 
+    @RequestMapping(method = RequestMethod.POST)
+    public void insert(@Valid @RequestBody CharacterRequest characterRequest,
                         BindingResult result, 
                         Locale locale) throws BusinessException {
         
@@ -39,7 +39,7 @@ public class PersonagemController {
             throw new BusinessException(result.getAllErrors());
         }
 
-        personagemRepository.save(personagemRequest.getPersonagem());
+        characterRepository.save(characterRequest.toSeries());
     }
 
 }

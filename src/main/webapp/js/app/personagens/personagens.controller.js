@@ -5,8 +5,8 @@
     
     function PersonagemController(PersonagensService) {
         var vm = this;
-        vm.save = function(nome, sobrenome, idade) {
-            PersonagensService.savePersonagem(nome, sobrenome, idade).success(function(data, status) {
+        vm.save = function(name, surname, age) {
+            PersonagensService.savePersonagem(name, surname, age).success(function(data, status) {
                alert('Salvo com sucesso');
             });
         };

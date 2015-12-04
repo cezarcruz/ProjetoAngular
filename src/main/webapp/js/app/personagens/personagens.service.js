@@ -10,8 +10,8 @@
         
         return service;
         
-        function savePersonagem(nome, sobrenome, idade) {
-            return $http.post(UrlService.getSiteUrl() + 'personagens/add', { nome : nome, sobrenome : sobrenome, idade : idade});            
+        function savePersonagem(name, surname, age) {
+            return $http.post(UrlService.getSiteUrl() + 'characters/', { name : name, surname : surname, age : age});
         }
     }
     

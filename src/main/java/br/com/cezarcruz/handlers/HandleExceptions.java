@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import br.com.cezarcruz.exception.BusinessException;
-import br.com.cezarcruz.models.ErrorInfo;
+import br.com.cezarcruz.data.models.ErrorInfo;
 
 @ControllerAdvice
 public class HandleExceptions {

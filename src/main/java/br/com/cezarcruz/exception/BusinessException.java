@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.validation.ObjectError;
 
-import br.com.cezarcruz.models.ErrorInfo;
+import br.com.cezarcruz.data.models.ErrorInfo;
 
 /**
  * Erros trataveis.
@@ -27,7 +27,6 @@ public class BusinessException extends Exception {
 		for (ObjectError e : validationsErrors) {
 			ErrorInfo eInf = new ErrorInfo(e.getCode(), e.getDefaultMessage());
 			errors.add(eInf);
-            //return;
 		}
 	}
 	
