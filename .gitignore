@@ -7,4 +7,6 @@ target
 #InteliJ IDEA
 .idea
 *.iml
+
 src/main/webapp/vendor
+.gradle
