@@ -10,3 +10,4 @@ target
 
 src/main/webapp/vendor
 .gradle
+build
