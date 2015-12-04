@@ -1,5 +1,5 @@
 (function() {
-	angular.module('app', [ 'ui.router', 'ui.bootstrap', 'app.seriado', 'app.configs', 'app.personagens']);
+	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.seriado', 'app.configs', 'app.personagens', 'app.translate']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);
@@ -13,7 +13,12 @@
 		UrlService.setSiteUrl(url);
 	}
 	
-	function config($stateProvider, $urlRouterProvider) {
+	function config($stateProvider, $urlRouterProvider, $translateProvider) {
+	        $translateProvider.preferredLanguage('en');
+            $translateProvider.useLoader('CustomLoader');
+            $translateProvider.useSanitizeValueStrategy('sanitize');
+            $translateProvider.determinePreferredLanguage();
+
             $urlRouterProvider.otherwise("/home");
             $stateProvider.state('seriados', {
                 url : "/series/add",

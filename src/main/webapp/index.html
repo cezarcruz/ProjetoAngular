@@ -8,6 +8,8 @@
         <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="vendor/lodash/lodash.js"></script>
         <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="vendor/angular-translate/angular-translate.js"></script>
+        <script type="text/javascript" src="vendor/angular-sanitize/angular-sanitize.js"></script>
 
         <script type="text/javascript" src="js/app/app.js"></script>
         
@@ -22,7 +24,10 @@
         <script type="text/javascript" src="js/app/personagens/personagens.js"></script>
         <script type="text/javascript" src="js/app/personagens/personagens.service.js"></script>
         <script type="text/javascript" src="js/app/personagens/personagens.controller.js"></script>
-        
+
+        <script type="text/javascript" src="js/app/translate/translate.js"></script>
+        <script type="text/javascript" src="js/app/translate/translate.loader.js"></script>
+
         <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
         <meta charset="utf-8">
@@ -34,12 +39,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav ">
-                        <li data-ui-sref-active="active"><a data-ui-sref="home">Home</a></li>
+                        <li data-ui-sref-active="active"><a data-ui-sref="home">{{ 'index.home' | translate }}</a></li>
                         <li data-ui-sref-active="active">
-                            <a data-ui-sref="seriados">Seriados</a>                            
+                            <a data-ui-sref="seriados">{{ 'commons.series' | translate }}</a>
                         </li>
                         <li data-ui-sref-active="active">
-                            <a data-ui-sref="personagens">Personagens</a>
+                            <a data-ui-sref="personagens">{{ 'commons.characters' | translate }}</a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
