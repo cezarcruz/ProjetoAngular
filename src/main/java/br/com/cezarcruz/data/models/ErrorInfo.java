@@ -1,4 +1,4 @@
-package br.com.cezarcruz.models;
+package br.com.cezarcruz.data.models;
 
 /**
  * Objetos com os erros trataveis.

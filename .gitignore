@@ -6,4 +6,5 @@ target
 
 #InteliJ IDEA
 .idea
-angular.js.iml
+*.iml
+src/main/webapp/vendor

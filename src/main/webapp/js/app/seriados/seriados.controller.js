@@ -10,11 +10,11 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 		//view model
 		var vm = this;		
 		vm.alerts = [];
-		vm.seriados = [];// seriados vindo do servidor.
+		vm.series = [];// seriados vindo do servidor.
 		vm.isEditing = false;
 
-		vm.save = function(nome, temporada) {			
-			SeriadoService.saveSeriado(nome, temporada, vm.id).success(
+		vm.save = function(name, season) {
+			SeriadoService.saveSeriado(name, season, vm.id).success(
 					function(data) {
 						vm.alerts.push({
 							type : 'success',
@@ -23,11 +23,11 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 						vm.getSeriados();
 						clear();
 					}).error(function(data) {
-				vm.alerts.push({
-					type : 'danger',
-					msg : data[0].message
-				});
-			});
+                    vm.alerts.push({
+                        type : 'danger',
+                        msg : data[0].message
+                    });
+                });
 		}
 
 		vm.closeAlert = function(index) {
@@ -37,7 +37,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 		vm.getSeriados = function() {
 			// ao carregar o controller faz a busca de todos os seriados.
 			SeriadoService.getAllSeriados().success(function(data) {
-				vm.seriados = data;
+				vm.series = data;
 			}).error(function(data) {
 				alert(data);
 			});
@@ -50,14 +50,13 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 			vm.isEditing = true;
 		}
 		
-		vm.excluir = function(seriado) {
+		vm.excluir = function(series) {
 			var modalInstance = $modal.open({
 				templateUrl : 'views/commons/common-modal.html',
 				controller : 'ModalInstanceCtrl',
 				resolve : {
 					mensagem : function() {
-						return "Deseja excluir esse seriado "
-								+ seriado.nome + "?";
+						return "Deseja excluir esse seriado " + series.name + "?";
 					},
 					titulo : function() {
 						return "Confirmar exclusão";
@@ -67,7 +66,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 
 			modalInstance.result.then(function() {
 				// aqui executa o código do ok.
-				SeriadoService.deleteSeriadoById(seriado.id).success(
+				SeriadoService.deleteSeriadoById(series.id).success(
 					function(data) {							
 						vm.getSeriados();
 					})

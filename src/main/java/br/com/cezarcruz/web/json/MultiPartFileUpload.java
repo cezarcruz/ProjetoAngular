@@ -1,4 +1,4 @@
-package br.com.cezarcruz.models.json.request;
+package br.com.cezarcruz.web.json;
 
 import java.util.List;
 

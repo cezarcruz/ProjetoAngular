@@ -3,20 +3,15 @@
 		close="vm.closeAlert($index)">{{alert.msg}}</alert>
 	<form>
 		<div class="form-group">
-			<label>Nome do seriado</label> <input type="text"
-				class="form-control" data-ng-model="vm.nome" placeholder="Nome">
+			<label>Nome do seriado</label>
+			<input type="text" class="form-control" data-ng-model="vm.name" placeholder="Nome">
 		</div>
 		<div class="form-group">
-			<label>Temporada atual</label> <input type="text"
-				class="form-control" data-ng-model="vm.temporada"
-				placeholder="Temporada">
+			<label>Temporada atual</label>
+			<input type="text" class="form-control" data-ng-model="vm.season" placeholder="Temporada">
 		</div>
-		<file-upload file="vm.file"></file-upload>
-		<input ng-if="vm.isEditing" type="button" class="btn btn-danger"
-			data-ng-click="vm.cancel()" value="Cancelar">
-		<input type="button" class="btn btn-default"
-			data-ng-click="vm.save(vm.nome, vm.temporada)" value="Salvar">
-			
+		<input ng-if="vm.isEditing" type="button" class="btn btn-danger" data-ng-click="vm.cancel()" value="Cancelar">
+		<input type="button" class="btn btn-default" data-ng-click="vm.save(vm.name, vm.season)" value="Salvar">
 	</form>
 	<hr>
 	<table class="table table-hover">
@@ -28,10 +23,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="seriado in vm.seriados">
-				<td>{{ seriado.nome }}</td>
-				<td>{{ seriado.temporada }}</td>
-				<td><a data-ui-sref="seriados" class="btn btn-btn-danger" data-ng-click="vm.editar(seriado)">E</a> <a class="btn btn-danger" data-ui-sref="seriados" data-ng-click="vm.excluir(seriado)">X</a> </td>
+			<tr ng-repeat="series in vm.series">
+				<td>{{ series.name }}</td>
+				<td>{{ series.season }}</td>
+				<td><a data-ui-sref="seriados" class="btn btn-btn-danger" data-ng-click="vm.editar(series)">E</a> <a class="btn btn-danger" data-ui-sref="seriados" data-ng-click="vm.excluir(series)">X</a> </td>
 			</tr>
 		</tbody>
 	</table>
