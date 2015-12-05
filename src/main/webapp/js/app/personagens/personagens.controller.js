@@ -10,5 +10,5 @@
                alert('Salvo com sucesso');
             });
         };
-    };    
+    }
 })();

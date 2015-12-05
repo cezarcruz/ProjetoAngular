@@ -7,9 +7,11 @@
 	function run (UrlService, $location) {
 		var url;
 		url = $location.absUrl().substring(0, $location.absUrl().indexOf('#') - 0);
-		if (url == "" || url == undefined) {
+
+		if (url === "" || url === undefined) {
 			url = $location.absUrl();
 		}
+
 		UrlService.setSiteUrl(url);
 	}
 	

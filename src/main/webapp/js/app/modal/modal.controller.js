@@ -7,10 +7,10 @@
 		
 		$scope.ok = function() {
 			$modalInstance.close(1);
-		}
+		};
 		
 		$scope.cancel = function() {
 			$modalInstance.dismiss('cancel');
-		}
+		};
 	}
 })();

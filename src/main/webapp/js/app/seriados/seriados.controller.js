@@ -28,7 +28,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
                         msg : data[0].message
                     });
                 });
-		}
+		};
 
 		vm.closeAlert = function(index) {
 			vm.alerts.splice(index, 1);
@@ -41,14 +41,14 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 			}).error(function(data) {
 				alert(data);
 			});
-		}
+		};
 		
 		vm.editar = function(seriado) {			
 			vm.nome = seriado.nome;
 			vm.temporada = seriado.temporada;
 			vm.id = seriado.id;
 			vm.isEditing = true;
-		}
+		};
 		
 		vm.excluir = function(series) {
 			var modalInstance = $modal.open({
@@ -69,7 +69,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 				SeriadoService.deleteSeriadoById(series.id).success(
 					function(data) {							
 						vm.getSeriados();
-					})
+					});
 				}, function() {
 					// 	aqui o codigo do cancel.
 				});
@@ -77,7 +77,7 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 		
 		vm.cancel = function() {
 			clear();
-		}
+		};
 		
 		function clear() {
 			vm.nome = undefined;
