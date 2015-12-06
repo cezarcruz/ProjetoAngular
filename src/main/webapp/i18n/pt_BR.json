@@ -1,6 +1,17 @@
 {
   "commons.series" : "Seriados",
   "commons.characters" : "Personagens",
+  "commons.name" : "Nome",
+  "commons.season" : "Season",
+  "commons.save" : "Save",
+  "commons.cancel" : "Cancelar",
+  "commons.action" : "Açao",
+  "commons.confirm" : "Confirmar",
+  "commons.confirm.exclusion" : "Confirmar exclusão",
   "TEXT" : "Texto",
-  "index.home" : "Home"
+  "index.home" : "Home",
+  "series.name" : "Nome do seriado",
+  "series.current.season" : "Temporada atual",
+  "series.save.with.success" : "The series was successfully saved",
+  "series.want.to.delete.this.show" : "Deseja excluir o seriado"
 }

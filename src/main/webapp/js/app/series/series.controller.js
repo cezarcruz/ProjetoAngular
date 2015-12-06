@@ -2,25 +2,25 @@
 	/**
 	 * Controller do seriados.
 	 */
-angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
+angular.module('app.series').controller('SeriesController', SeriesController);
 
-	SeriadosCtrl.$inject = ['$location', 'SeriadoService','$modal', '$http'];
+	SeriesController.$inject = ['$location', 'SeriesService','$uibModal', '$http', '$filter'];
 
-	function SeriadosCtrl($location, SeriadoService, $modal, $http) {
+	function SeriesController($location, SeriesService, $uibModal, $http, $filter) {
 		//view model
 		var vm = this;		
 		vm.alerts = [];
-		vm.series = [];// seriados vindo do servidor.
+		vm.series = [];
 		vm.isEditing = false;
 
 		vm.save = function(name, season) {
-			SeriadoService.saveSeriado(name, season, vm.id).success(
+			SeriesService.saveSeries(name, season, vm.id).success(
 					function(data) {
 						vm.alerts.push({
 							type : 'success',
-							msg : 'O Seriado foi salvo com sucesso.'
+							msg : $filter('translate')('series.save.with.success')
 						});
-						vm.getSeriados();
+						vm.getSeries();
 						clear();
 					}).error(function(data) {
                     vm.alerts.push({
@@ -34,44 +34,43 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 			vm.alerts.splice(index, 1);
 		};
 
-		vm.getSeriados = function() {
+		vm.getSeries = function() {
 			// ao carregar o controller faz a busca de todos os seriados.
-			SeriadoService.getAllSeriados().success(function(data) {
+			SeriesService.getAllSeries().success(function(data) {
 				vm.series = data;
 			}).error(function(data) {
 				alert(data);
 			});
 		};
 		
-		vm.editar = function(seriado) {			
-			vm.nome = seriado.nome;
-			vm.temporada = seriado.temporada;
-			vm.id = seriado.id;
+		vm.edit = function(series) {
+			vm.name = series.name;
+			vm.season = series.season;
+			vm.id = series.id;
 			vm.isEditing = true;
 		};
 		
-		vm.excluir = function(series) {
-			var modalInstance = $modal.open({
+		vm.delete = function(series) {
+			var modalInstance = $uibModal.open({
 				templateUrl : 'views/commons/common-modal.html',
 				controller : 'ModalInstanceCtrl',
 				resolve : {
-					mensagem : function() {
-						return "Deseja excluir esse seriado " + series.name + "?";
+					message : function() {
+						return $filter('translate')('series.want.to.delete.this.show') + ' ' + series.name + '?';
 					},
-					titulo : function() {
-						return "Confirmar exclusão";
+					title : function() {
+						return $filter('translate')('commons.confirm.exclusion');
 					}
 				}
 			});
 
 			modalInstance.result.then(function() {
-				// aqui executa o código do ok.
-				SeriadoService.deleteSeriadoById(series.id).success(
+				SeriesService.deleteSeriesById(series.id).success(
 					function(data) {							
-						vm.getSeriados();
+						vm.getSeries();
 					});
 				}, function() {
-					// 	aqui o codigo do cancel.
+
 				});
 		};
 		
@@ -80,12 +79,12 @@ angular.module('app.seriado').controller('SeriadosCtrl', SeriadosCtrl);
 		};
 		
 		function clear() {
-			vm.nome = undefined;
-			vm.temporada = undefined;
+			vm.name = undefined;
+			vm.season = undefined;
 			vm.id = undefined;
 			vm.isEditing = undefined;
 		}
 		
-		vm.getSeriados();
+		vm.getSeries();
 	}
 })();

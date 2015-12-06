@@ -31,9 +31,9 @@ public class CharacterController {
      * @throws BusinessException
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void insert(@Valid @RequestBody CharacterRequest characterRequest,
-                        BindingResult result, 
-                        Locale locale) throws BusinessException {
+    public void insert(@Valid @RequestBody final CharacterRequest characterRequest,
+                        final BindingResult result,
+                        final Locale locale) throws BusinessException {
         
         if (result.hasErrors()) {
             throw new BusinessException(result.getAllErrors());

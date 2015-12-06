@@ -1,19 +1,19 @@
 (function(){
-	angular.module('app.seriado').factory('SeriadoService', SeriadoService);
+	angular.module('app.series').factory('SeriesService', SeriesService);
 
-	SeriadoService.$inject = ['$http', 'UrlService'];
+	SeriesService.$inject = ['$http', 'UrlService'];
 
-	function SeriadoService($http, UrlService) {
+	function SeriesService($http, UrlService) {
 		
 		var service = {
-			saveSeriado : saveSeriado,
-			getAllSeriados : getAllSeriados,
-			deleteSeriadoById : deleteSeriadoById
+			saveSeries : saveSeries,
+			getAllSeries : getAllSeries,
+			deleteSeriesById : deleteSeriesById
 		};
 		
 		return service;
 		
-		function saveSeriado(name, season, id) {
+		function saveSeries(name, season, id) {
 			if (id) {
 				return $http.put(UrlService.getSiteUrl() + 'series/update', {name : name, season : season, id : id});
 			} else {
@@ -21,11 +21,11 @@
 			}
 		}
 
-		function getAllSeriados() {
+		function getAllSeries() {
 			return $http.get(UrlService.getSiteUrl() + 'series/list');
 		}
 		
-		function deleteSeriadoById(id) {
+		function deleteSeriesById(id) {
 			return $http.delete(UrlService.getSiteUrl() + "series/delete/" + id.toString());
 		}
 	}	

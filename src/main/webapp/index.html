@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Titulo</title>
+        <title>Angular project</title>
         <script type="text/javascript" src="vendor/angular/angular.js"></script>
         <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
         <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -15,12 +15,11 @@
         
         <script type="text/javascript" src="js/app/config/config.js"></script>
         <script type="text/javascript" src="js/app/config/urls.service.js"></script>
-        <script type="text/javascript" src="js/app/files/upload.directive.js"></script>
         
         <script type="text/javascript" src="js/app/modal/modal.controller.js"></script>
-        <script type="text/javascript" src="js/app/seriados/seriados.js"></script>
-        <script type="text/javascript" src="js/app/seriados/seriados.controller.js"></script>
-        <script type="text/javascript" src="js/app/seriados/seriados.service.js"></script>
+        <script type="text/javascript" src="js/app/series/series.js"></script>
+        <script type="text/javascript" src="js/app/series/series.controller.js"></script>
+        <script type="text/javascript" src="js/app/series/series.service.js"></script>
         <script type="text/javascript" src="js/app/personagens/personagens.js"></script>
         <script type="text/javascript" src="js/app/personagens/personagens.service.js"></script>
         <script type="text/javascript" src="js/app/personagens/personagens.controller.js"></script>
@@ -41,7 +40,7 @@
                     <ul class="nav navbar-nav ">
                         <li data-ui-sref-active="active"><a data-ui-sref="home">{{ 'index.home' | translate }}</a></li>
                         <li data-ui-sref-active="active">
-                            <a data-ui-sref="seriados">{{ 'commons.series' | translate }}</a>
+                            <a data-ui-sref="series">{{ 'commons.series' | translate }}</a>
                         </li>
                         <li data-ui-sref-active="active">
                             <a data-ui-sref="personagens">{{ 'commons.characters' | translate }}</a>

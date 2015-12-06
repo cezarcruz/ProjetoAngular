@@ -1,0 +1,36 @@
+<div>
+	<alert ng-repeat="alert in vm.alerts" type="{{alert.type}}"
+		close="vm.closeAlert($index)">{{alert.msg}}</alert>
+	<form>
+		<div class="form-group">
+			<label>{{ 'series.name' | translate }}</label>
+			<input type="text" class="form-control" data-ng-model="vm.name" placeholder="{{ 'commons.name' | translate }}">
+		</div>
+		<div class="form-group">
+			<label>{{ 'series.current.season' | translate }}</label>
+			<input type="text" class="form-control" data-ng-model="vm.season" placeholder="{{ 'commons.season' | translate }}">
+		</div>
+		<input ng-if="vm.isEditing" type="button" class="btn btn-danger" data-ng-click="vm.cancel()" value="{{ 'commons.cancel' | translate }}">
+		<input type="button" class="btn btn-default" data-ng-click="vm.save(vm.name, vm.season)" value="{{ 'commons.save' | translate }}">
+	</form>
+	<hr>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>{{ 'commons.name' | translate }}</th>
+				<th>{{ 'commons.season' | translate }}</th>
+				<th>{{ 'commons.action' | translate }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="series in vm.series">
+				<td>{{ series.name }}</td>
+				<td>{{ series.season }}</td>
+				<td>
+					<a data-ui-sref="series" class="btn btn-btn-danger" data-ng-click="vm.edit(series)">E</a>
+					<a class="btn btn-danger" data-ui-sref="series" data-ng-click="vm.delete(series)">X</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

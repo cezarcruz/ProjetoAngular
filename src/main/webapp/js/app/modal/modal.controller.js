@@ -1,16 +1,18 @@
 (function() {
 	angular.module('app').controller('ModalInstanceCtrl', ModalInstanceCtrl); 
-	
-	function ModalInstanceCtrl($scope, $modalInstance, mensagem, titulo) {
-		$scope.mensagem = mensagem;
-		$scope.titulo = titulo;
+
+	ModalInstanceCtrl.$inject = ['$scope', '$uibModalInstance', 'message', 'title'];
+
+	function ModalInstanceCtrl($scope, $uibModalInstance, message, title) {
+		$scope.message = message;
+		$scope.title = title;
 		
 		$scope.ok = function() {
-			$modalInstance.close(1);
+			$uibModalInstance.close(1);
 		};
 		
 		$scope.cancel = function() {
-			$modalInstance.dismiss('cancel');
+			$uibModalInstance.dismiss('cancel');
 		};
 	}
 })();

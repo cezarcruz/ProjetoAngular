@@ -1,5 +1,5 @@
 (function() {
-	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.seriado', 'app.configs', 'app.personagens', 'app.translate']);
+	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.personagens', 'app.translate']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);
@@ -16,16 +16,17 @@
 	}
 	
 	function config($stateProvider, $urlRouterProvider, $translateProvider) {
+
 	        $translateProvider.preferredLanguage('en');
             $translateProvider.useLoader('CustomLoader');
             $translateProvider.useSanitizeValueStrategy('sanitize');
             $translateProvider.determinePreferredLanguage();
 
             $urlRouterProvider.otherwise("/home");
-            $stateProvider.state('seriados', {
+            $stateProvider.state('series', {
                 url : "/series/add",
-                templateUrl : "views/seriados/seriados-add.html",
-                controller : 'SeriadosCtrl',
+                templateUrl : "views/series/series-add.html",
+                controller : 'SeriesController',
                 controllerAs : 'vm'
             }).state('personagens', {
                 url : '/personagens/add',
