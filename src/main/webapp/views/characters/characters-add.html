@@ -1,0 +1,17 @@
+<div>
+    <form>
+        <div class="form-group">
+            <label>{{ 'commons.name' | translate }}</label>
+            <input type="text" class="form-control" data-ng-model="vm.name" placeholder="{{ 'commons.name' | translate }}">
+        </div>
+        <div class="form-group">
+            <label>{{ 'commons.surname' | translate }}</label>
+            <input type="text" class="form-control" data-ng-model="vm.surname" placeholder="{{ 'commons.surname' | translate }}">
+        </div>
+        <div class="form-group">
+            <label>{{ 'commons.age' | translate }}</label>
+            <input type="text" class="form-control" data-ng-model="vm.age" placeholder="{{ 'commons.age' | translate }}">
+        </div>
+        <input type="button" class="btn btn-danger" data-ng-click="vm.save(vm.name, vm.surname, vm.age)" value="{{ 'commons.save' | translate }}">
+    </form>
+</div>

@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
     angular.module('app.translate').factory('CustomLoader', CustomLoader);
 
     CustomLoader.$inject = ['$http', '$q'];

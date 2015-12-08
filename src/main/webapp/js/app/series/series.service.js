@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
 	angular.module('app.series').factory('SeriesService', SeriesService);
 
 	SeriesService.$inject = ['$http', 'UrlService'];

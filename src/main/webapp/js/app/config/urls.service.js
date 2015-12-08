@@ -1,5 +1,7 @@
 (function() {
+    'use strict';
 	angular.module("app.urls", []).factory('UrlService', [UrlService]);
+
 	function UrlService() {
 
 		var service = {

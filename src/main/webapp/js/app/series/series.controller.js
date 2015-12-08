@@ -1,7 +1,5 @@
 (function() {
-	/**
-	 * Controller do seriados.
-	 */
+    'use strict';
 angular.module('app.series').controller('SeriesController', SeriesController);
 
 	SeriesController.$inject = ['$location', 'SeriesService','$uibModal', '$http', '$filter'];

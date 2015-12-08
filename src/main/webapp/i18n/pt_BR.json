@@ -2,6 +2,8 @@
   "commons.series" : "Seriados",
   "commons.characters" : "Personagens",
   "commons.name" : "Nome",
+  "commons.surname" : "Sobrenome",
+  "commons.age" : "Idade",
   "commons.season" : "Season",
   "commons.save" : "Save",
   "commons.cancel" : "Cancelar",

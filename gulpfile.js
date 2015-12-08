@@ -4,7 +4,27 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 
-var files = "./src/main/webapp/js/app/**/*.js";
+var filesPrefix = "./src/main/webapp/";
+
+//order
+var files = [
+    'js/app/app.js',
+    'js/app/config/config.js',
+    'js/app/config/urls.service.js',
+    'js/app/modal/modal.controller.js',
+    'js/app/series/series.js',
+    'js/app/series/series.controller.js',
+    'js/app/series/series.service.js',
+    'js/app/character/character.js',
+    'js/app/character/character.service.js',
+    'js/app/character/character.controller.js',
+    'js/app/translate/translate.js',
+    'js/app/translate/translate.loader.js'
+];
+
+for (var x = 0; x < files.length; x++) {
+    files[x] = filesPrefix + files[x] ;
+}
 
 gulp.task('lint', function() {
 	gulp.src(files).pipe(jshint()).pipe(jshint.reporter('default'));

@@ -1,9 +1,12 @@
 (function() {
-	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.personagens', 'app.translate']);
+    'use strict';
+	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.characters', 'app.translate']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);
-	
+
+	run.$inject = ['UrlService', '$location'];
+
 	function run (UrlService, $location) {
 		var url;
 		url = $location.absUrl().substring(0, $location.absUrl().indexOf('#') - 0);
@@ -14,7 +17,9 @@
 
 		UrlService.setSiteUrl(url);
 	}
-	
+
+	config.$inject = ['$stateProvider', '$urlRouterProvider', '$translateProvider'];
+
 	function config($stateProvider, $urlRouterProvider, $translateProvider) {
 
 	        $translateProvider.preferredLanguage('en');
@@ -28,10 +33,10 @@
                 templateUrl : "views/series/series-add.html",
                 controller : 'SeriesController',
                 controllerAs : 'vm'
-            }).state('personagens', {
-                url : '/personagens/add',
-                templateUrl : 'views/personagens/personagens-add.html',
-                controller : 'PersonagemController',
+            }).state('characters', {
+                url : '/characters/add',
+                templateUrl : 'views/characters/characters-add.html',
+                controller : 'CharactersController',
                 controllerAs : 'vm'
             }).state('home', {
                 url : "/home",

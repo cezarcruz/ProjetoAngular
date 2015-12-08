@@ -2,6 +2,8 @@
   "commons.series" : "Series",
   "commons.characters" : "Characters",
   "commons.name" : "Name",
+  "commons.surname" : "Surname",
+  "commons.age" : "Age",
   "commons.season" : "Season",
   "commons.save" : "Save",
   "commons.cancel" : "Cancel",
