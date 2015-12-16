@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.characters', 'app.translate']);
+	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.characters', 'app.translate', 'app.home']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);
@@ -40,7 +40,9 @@
                 controllerAs : 'vm'
             }).state('home', {
                 url : "/home",
-                templateUrl : "views/pages/home.html"			
+                templateUrl : "views/pages/home.html",
+                controller : 'HomeController',
+                controllerAs : "vm"
             });
 	}
 })();

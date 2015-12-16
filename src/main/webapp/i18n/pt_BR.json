@@ -14,6 +14,7 @@
   "index.home" : "Home",
   "series.name" : "Nome do seriado",
   "series.current.season" : "Temporada atual",
-  "series.save.with.success" : "The series was successfully saved",
-  "series.want.to.delete.this.show" : "Deseja excluir o seriado"
+  "series.save.with.success" : "Seriado salvo com sucesso",
+  "series.want.to.delete.this.show" : "Deseja excluir o seriado",
+  "home.last.series.added" : "Ultimos seriados adicionados"
 }

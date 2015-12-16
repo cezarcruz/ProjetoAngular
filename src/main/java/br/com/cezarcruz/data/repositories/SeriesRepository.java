@@ -1,9 +1,14 @@
 package br.com.cezarcruz.data.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-
 import br.com.cezarcruz.data.models.Series;
+import org.springframework.data.repository.Repository;
 
-public interface SeriesRepository extends CrudRepository<Series, Long> {
-	
+import java.util.List;
+
+public interface SeriesRepository extends Repository<Series, Long> {
+    Series save(Series s);
+    List<Series> findAll();
+    Long delete(Long id);
+    Series findOne(Long id);
+    List<Series> findFirst5ByOrderByCreatedAtDesc();
 }

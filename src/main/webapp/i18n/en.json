@@ -15,5 +15,6 @@
   "series.name" : "Series name",
   "series.current.season" : "Current season",
   "series.save.with.success" : "The series was successfully saved.",
-  "series.want.to.delete.this.show" : "Want to delete this show"
+  "series.want.to.delete.this.show" : "Want to delete this show",
+  "home.last.series.added" : "Last series added"
 }

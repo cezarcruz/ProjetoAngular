@@ -9,7 +9,8 @@
 		var service = {
 			saveSeries : saveSeries,
 			getAllSeries : getAllSeries,
-			deleteSeriesById : deleteSeriesById
+			deleteSeriesById : deleteSeriesById,
+			getLastSeries : getLastSeries
 		};
 		
 		return service;
@@ -28,6 +29,10 @@
 		
 		function deleteSeriesById(id) {
 			return $http.delete(UrlService.getSiteUrl() + "series/delete/" + id.toString());
+		}
+
+		function getLastSeries() {
+		    return $http.get(UrlService.getSiteUrl() + 'series/last-series');
 		}
 	}	
 })();

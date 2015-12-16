@@ -19,7 +19,9 @@ var files = [
     'js/app/character/character.service.js',
     'js/app/character/character.controller.js',
     'js/app/translate/translate.js',
-    'js/app/translate/translate.loader.js'
+    'js/app/translate/translate.loader.js',
+    'js/app/home/home.js',
+    'js/app/home/home.controller.js'
 ];
 
 for (var x = 0; x < files.length; x++) {

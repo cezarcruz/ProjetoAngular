@@ -2,15 +2,13 @@ package br.com.cezarcruz.data.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Created by cezar on 28/04/15.
- */
 @Entity
 public class Character {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;

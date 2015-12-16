@@ -1,23 +1,15 @@
 package br.com.cezarcruz.web.controllers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import br.com.cezarcruz.data.models.Series;
+import br.com.cezarcruz.data.repositories.SeriesRepository;
+import br.com.cezarcruz.exception.BusinessException;
+import br.com.cezarcruz.web.json.SeriesRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import br.com.cezarcruz.exception.BusinessException;
-import br.com.cezarcruz.data.models.Series;
-import br.com.cezarcruz.web.json.SeriesRequest;
-import br.com.cezarcruz.data.repositories.SeriesRepository;
+import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping(value = "/series")
@@ -41,14 +33,7 @@ public class SeriesControler {
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public List<Series> getAll() {
-		List<Series> result = new ArrayList<Series>();
-		Iterator<Series> iterator = repository.findAll().iterator();
-		
-		while(iterator.hasNext()) {
-			result.add(iterator.next());
-		}
-		
-		return result;
+		return repository.findAll();
 	}
 	
 	/**
@@ -70,5 +55,10 @@ public class SeriesControler {
 	public void update(@Valid @RequestBody final SeriesRequest request,
 					   final Locale locale) throws BusinessException {
 		repository.save(request.toSeries());
+	}
+
+	@RequestMapping(value="/last-series", method = RequestMethod.GET)
+	public List<Series> getLastSeries() {
+		return repository.findFirst5ByOrderByCreatedAtDesc();
 	}
 }

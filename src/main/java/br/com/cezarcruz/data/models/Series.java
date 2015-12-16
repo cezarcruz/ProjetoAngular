@@ -1,16 +1,21 @@
 package br.com.cezarcruz.data.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Series {
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private Integer season;
+
+	@Column(name = "created_at")
+	public Date createdAt;
+
+	@Column(name = "updated_at")
+	public Date updatedAt;
 
 	public Series() {}
 
@@ -42,5 +47,15 @@ public class Series {
 
 	public void setSeason(Integer season) {
 		this.season = season;
+	}
+
+	@PrePersist
+	void createdAt() {
+		this.createdAt = this.updatedAt = new Date();
+	}
+
+	@PreUpdate
+	void updatedAt() {
+		this.updatedAt = new Date();
 	}
 }
