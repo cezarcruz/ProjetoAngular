@@ -2,8 +2,11 @@
     <div class="panel panel-primary">
         <div class="panel-heading">{{ 'home.last.series.added' | translate }}</div>
         <div class="panel-body">
-            <ul class="list-group" ng-repeat="s in vm.series">
+            <ul class="list-group" ng-repeat="s in vm.series" ng-if="vm.series.length > 0">
                 <li class="list-group-item">{{ s.name }}</li>
+            </ul>
+            <ul class="list-group" ng-if="vm.series.length <= 0">
+                <li class="list-group-item">{{ vm.emptyMessage }}</li>
             </ul>
         </div>
     </div>

@@ -32,7 +32,7 @@ public class SeriesControler {
 	 * @return
 	 * @throws BusinessException
      */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)//TODO: trocar para um PUT
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void insert(@Valid @RequestBody final SeriesRequest request,
 					   final Locale locale) throws BusinessException {
 		repository.save(request.toSeries());
@@ -47,7 +47,7 @@ public class SeriesControler {
 	 * Drop a serie by id
 	 * @param id
 	 */
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)//TODO Arrumar isso.
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") final  String id) {//TODO: ajustar para a forma correta
 		repository.delete(Long.parseLong(id));
 	}

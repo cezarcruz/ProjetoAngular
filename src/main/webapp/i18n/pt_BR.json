@@ -16,5 +16,6 @@
   "series.current.season" : "Temporada atual",
   "series.save.with.success" : "Seriado salvo com sucesso",
   "series.want.to.delete.this.show" : "Deseja excluir o seriado",
-  "home.last.series.added" : "Ultimos seriados adicionados"
+  "home.last.series.added" : "Ultimos seriados adicionados",
+  "commons.no.records.found" : "Nenhum registro encontrado"
 }
