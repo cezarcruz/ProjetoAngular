@@ -1,6 +1,7 @@
 package br.com.cezarcruz.data.repositories;
 
 import br.com.cezarcruz.data.models.Series;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface SeriesRepository extends Repository<Series, Long> {
     List<Series> findAll();
     Long delete(Long id);
     Series findOne(Long id);
-    List<Series> findFirst5ByOrderByCreatedAtDesc();
+    List<Series> findAllByOrderByCreatedAtDesc(Pageable pageable);
 }

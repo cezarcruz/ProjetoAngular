@@ -1,6 +1,15 @@
 (function() {
     'use strict';
-	angular.module('app', [ 'ui.router', 'pascalprecht.translate', 'ngSanitize', 'ui.bootstrap', 'app.series', 'app.configs', 'app.characters', 'app.translate', 'app.home']);
+	angular.module('app', [ 'ui.router',
+	                        'pascalprecht.translate',
+	                        'ngSanitize',
+	                        'ui.bootstrap',
+	                        'app.series',
+	                        'app.configs',
+	                        'app.characters',
+	                        'app.translate',
+	                        'app.home',
+	                        'last-series']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);

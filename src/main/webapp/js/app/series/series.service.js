@@ -31,8 +31,8 @@
 			return $http.delete(UrlService.getSiteUrl() + "series/delete/" + id.toString());
 		}
 
-		function getLastSeries() {
-		    return $http.get(UrlService.getSiteUrl() + 'series/last-series');
+		function getLastSeries(numSeries) {
+		    return $http.get(UrlService.getSiteUrl() + 'series/last-series/' + numSeries);
 		}
 	}	
 })();

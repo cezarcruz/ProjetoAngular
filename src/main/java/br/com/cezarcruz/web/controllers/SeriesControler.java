@@ -4,16 +4,23 @@ import br.com.cezarcruz.data.models.Series;
 import br.com.cezarcruz.data.repositories.SeriesRepository;
 import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.web.json.SeriesRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
+
 @RestController
 @RequestMapping(value = "/series")
 public class SeriesControler {
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private SeriesRepository repository;
@@ -57,8 +64,10 @@ public class SeriesControler {
 		repository.save(request.toSeries());
 	}
 
-	@RequestMapping(value="/last-series", method = RequestMethod.GET)
-	public List<Series> getLastSeries() {
-		return repository.findFirst5ByOrderByCreatedAtDesc();
+	@RequestMapping(value="/last-series/{quantity}", method = RequestMethod.GET)
+	public List<Series> getLastSeries(@PathVariable("quantity") Integer quantity) {
+		logger.debug("Getting last {} series", quantity);
+        Pageable top = new PageRequest(0, quantity);
+		return repository.findAllByOrderByCreatedAtDesc(top);
 	}
 }

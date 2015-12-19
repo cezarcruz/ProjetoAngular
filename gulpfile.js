@@ -21,7 +21,9 @@ var files = [
     'js/app/translate/translate.js',
     'js/app/translate/translate.loader.js',
     'js/app/home/home.js',
-    'js/app/home/home.controller.js'
+    'js/app/home/home.controller.js',
+    'js/app/directives/last-series/last-series.module.js',
+    'js/app/directives/last-series/last-series.directive.js'
 ];
 
 for (var x = 0; x < files.length; x++) {
