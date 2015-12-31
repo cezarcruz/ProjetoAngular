@@ -3,6 +3,7 @@ package br.com.cezarcruz.web.json;
 import br.com.cezarcruz.data.models.Series;
 
 public class SeriesRequest {
+
 	private Long id;
 	private String name;
 	private Integer season;
@@ -14,7 +15,7 @@ public class SeriesRequest {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+    
 	public String getName() {
 		return name;
 	}

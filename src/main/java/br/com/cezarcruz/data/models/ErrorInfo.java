@@ -1,21 +1,12 @@
 package br.com.cezarcruz.data.models;
 
-/**
- * Objetos com os erros trataveis.
- * 
- * @author ccruz
- *
- */
-public class ErrorInfo {
+import java.io.Serializable;
+
+public class ErrorInfo implements Serializable {
+
+	private static final long serialVersionUID = 1905171478428723407L;
+
 	private final String code;
-
-	public String getCode() {
-		return code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
 
 	private final String message;
 
@@ -24,4 +15,11 @@ public class ErrorInfo {
 		this.message = message;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
 }

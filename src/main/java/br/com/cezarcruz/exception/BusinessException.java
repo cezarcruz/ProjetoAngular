@@ -1,12 +1,11 @@
 package br.com.cezarcruz.exception;
 
+import br.com.cezarcruz.data.models.ErrorInfo;
+import org.springframework.validation.ObjectError;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import org.springframework.validation.ObjectError;
-
-import br.com.cezarcruz.data.models.ErrorInfo;
 
 /**
  * Erros trataveis.
@@ -15,8 +14,7 @@ import br.com.cezarcruz.data.models.ErrorInfo;
  */
 public class BusinessException extends Exception {
 
-	private static final long serialVersionUID = 1L;
-	private final Collection<ErrorInfo> errors;
+	private final transient Collection<ErrorInfo> errors;
 	
 	public BusinessException(Collection<ErrorInfo> errors) {
 		this.errors = errors;
@@ -38,5 +36,4 @@ public class BusinessException extends Exception {
 	public Collection<ErrorInfo> getErrors() {
 		return errors;
 	}
-	
 }

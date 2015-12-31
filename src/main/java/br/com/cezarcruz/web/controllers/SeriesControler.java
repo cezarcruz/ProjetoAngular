@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Locale;
 
 
 @RestController
 @RequestMapping(value = "/series")
 public class SeriesControler {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final Logger LOGGER = LoggerFactory.getLogger(SeriesControler.class);
 
 	@Autowired
 	private SeriesRepository repository;
@@ -28,13 +27,11 @@ public class SeriesControler {
 	/**
 	 * Save a new serie
 	 * @param request
-	 * @param locale
 	 * @return
 	 * @throws BusinessException
      */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void insert(@Valid @RequestBody final SeriesRequest request,
-					   final Locale locale) throws BusinessException {
+	public void insert(@Valid @RequestBody final SeriesRequest request) throws BusinessException {
 		repository.save(request.toSeries());
 	}
 	
@@ -48,25 +45,23 @@ public class SeriesControler {
 	 * @param id
 	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") final  String id) {//TODO: ajustar para a forma correta
+	public void delete(@PathVariable("id") final  String id) {
 		repository.delete(Long.parseLong(id));
 	}
 	
 	/**
 	 * Update a serie
 	 * @param request
-	 * @param locale
 	 * @throws BusinessException
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public void update(@Valid @RequestBody final SeriesRequest request,
-					   final Locale locale) throws BusinessException {
+	public void update(@Valid @RequestBody final SeriesRequest request) throws BusinessException {
 		repository.save(request.toSeries());
 	}
 
 	@RequestMapping(value="/last-series/{quantity}", method = RequestMethod.GET)
 	public List<Series> getLastSeries(@PathVariable("quantity") Integer quantity) {
-		logger.debug("Getting last {} series", quantity);
+		LOGGER.debug("Getting last {} series", quantity);
         Pageable top = new PageRequest(0, quantity);
 		return repository.findAllByOrderByCreatedAtDesc(top);
 	}
