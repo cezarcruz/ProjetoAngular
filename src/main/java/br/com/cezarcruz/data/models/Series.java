@@ -17,7 +17,9 @@ public class Series {
 	@Column(name = "updated_at")
 	public Date updatedAt;
 
-	public Series() {}
+	public Series() {
+        //empty
+	}
 
 	public Series(String name, Integer season, Long id) {
 		this.name = name;

@@ -10,11 +10,16 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.sonarqube" version "1.1"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
 apply plugin: 'war'
+apply plugin: 'sonar'
 
 compileJava {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -61,3 +66,4 @@ test {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
 }
+
