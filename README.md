@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cezarcruz/ProjetoAngular.svg?branch=master)](https://travis-ci.org/cezarcruz/ProjetoAngular)
+[![Build Status](https://travis-ci.org/cezarcruz/angular-project.svg?branch=master)](https://travis-ci.org/cezarcruz/angular-project)
 [![Code Climate](https://codeclimate.com/github/cezarcruz/ProjetoAngular/badges/gpa.svg)](https://codeclimate.com/github/cezarcruz/ProjetoAngular)
 [![Test Coverage](https://codeclimate.com/github/cezarcruz/ProjetoAngular/badges/coverage.svg)](https://codeclimate.com/github/cezarcruz/ProjetoAngular/coverage)
 [![Issue Count](https://codeclimate.com/github/cezarcruz/ProjetoAngular/badges/issue_count.svg)](https://codeclimate.com/github/cezarcruz/ProjetoAngular)
