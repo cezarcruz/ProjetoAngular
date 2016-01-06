@@ -1,6 +1,6 @@
 package br.com.cezarcruz.web.json;
 
-import br.com.cezarcruz.data.models.Character;
+import br.com.cezarcruz.data.models.Persona;
 
 /**
  * Created by cezar on 28/04/15.
@@ -44,7 +44,7 @@ public class CharacterRequest {
         this.age = age;
     }
 
-    public Character toSeries() {
-        return new Character(this.getId(), this.getName(), this.getSurname(), this.getAge());
+    public Persona toSeries() {
+        return new Persona(this.getId(), this.getName(), this.getSurname(), this.getAge());
     }
 }

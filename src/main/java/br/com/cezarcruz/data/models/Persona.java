@@ -5,8 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+/**
+ * Representing a character, maybe change for another name.
+ */
 @Entity
-public class Character {
+public class Persona {
 
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -14,7 +18,9 @@ public class Character {
     private String surname;
     private Integer age;
 
-    public Character(Long id, String name, String surname, Integer age) {
+    public Persona(){}
+
+    public Persona(Long id, String name, String surname, Integer age) {
         this.id = id;
         this.name = name;
         this.surname = surname;
