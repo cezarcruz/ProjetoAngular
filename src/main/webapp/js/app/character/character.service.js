@@ -7,13 +7,23 @@
     function CharactersService(UrlService, $http) {
 
         var service = {
-            saveCharacter : saveCharacter
+            saveCharacter : saveCharacter,
+            getAllCharacters : getAllCharacters,
+            deleteCharacterById : deleteCharacterById
         };
         
         return service;
         
-        function saveCharacter(name, surname, age) {
-            return $http.post(UrlService.getSiteUrl() + 'characters/', { name : name, surname : surname, age : age});
+        function saveCharacter(character) {
+            return $http.post(UrlService.getSiteUrl() + 'characters/', character);
+        }
+
+        function getAllCharacters() {
+            return $http.get(UrlService.getSiteUrl() + 'characters/list');
+        }
+
+        function deleteCharacterById(id) {
+            return $http.delete(UrlService.getSiteUrl() + 'characters/delete/' + id.toString());
         }
     }
     

@@ -1,16 +1,15 @@
 package br.com.cezarcruz.web.controllers;
 
+import br.com.cezarcruz.data.models.Character;
 import br.com.cezarcruz.data.repositories.CharacterRepository;
 import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.web.json.CharacterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by cezar on 28/04/15.
@@ -36,7 +35,16 @@ public class CharacterController {
             throw new BusinessException(result.getAllErrors());
         }
 
-        characterRepository.save(characterRequest.toSeries());
+        characterRepository.save(characterRequest.toCharacter());
     }
 
+    @RequestMapping(value="/list", method = RequestMethod.GET)
+    public List<Character> getAll() {
+        return characterRepository.findAll();
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") final  String id) {
+        characterRepository.delete(Long.parseLong(id));
+    }
 }

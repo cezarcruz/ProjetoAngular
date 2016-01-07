@@ -13,19 +13,20 @@ angular.module('app.series').controller('SeriesController', SeriesController);
 
 		vm.save = function(name, season) {
 			SeriesService.saveSeries(name, season, vm.id).success(
-					function(data) {
-						vm.alerts.push({
-							type : 'success',
-							msg : $filter('translate')('series.save.with.success')
-						});
-						vm.getSeries();
-						clear();
-					}).error(function(data) {
-                    vm.alerts.push({
-                        type : 'danger',
-                        msg : data[0].message
-                    });
-                });
+                function(data) {
+                    vm.alerts[0] = {
+                        type : 'success',
+                        msg : $filter('translate')('series.save.with.success')
+                    };
+                    vm.getSeries();
+                    clear();
+                }).error(function(data) {
+
+                vm.alerts[0] = {
+                    type : 'danger',
+                    msg : data[0].message
+                };
+            });
 		};
 
 		vm.closeAlert = function(index) {
@@ -33,7 +34,6 @@ angular.module('app.series').controller('SeriesController', SeriesController);
 		};
 
 		vm.getSeries = function() {
-			// ao carregar o controller faz a busca de todos os seriados.
 			SeriesService.getAllSeries().success(function(data) {
 				vm.series = data;
 			}).error(function(data) {
@@ -64,12 +64,15 @@ angular.module('app.series').controller('SeriesController', SeriesController);
 
 			modalInstance.result.then(function() {
 				SeriesService.deleteSeriesById(series.id).success(
-					function(data) {							
+					function(data) {
+                        vm.alerts[0] = {
+                            type : 'success',
+                            msg : $filter('translate')('series.removed.successfully')
+                        };
 						vm.getSeries();
 					});
-				}, function() {
-
-				});
+				}
+            );
 		};
 		
 		vm.cancel = function() {

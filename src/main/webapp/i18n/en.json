@@ -15,7 +15,10 @@
   "series.name" : "Series name",
   "series.current.season" : "Current season",
   "series.save.with.success" : "The series was successfully saved.",
+  "series.removed.successfully" : "Series successfully excluded",
   "series.want.to.delete.this.show" : "Want to delete this show",
+  "character.want.to.delete.this.character" : "Want to delete this character",
+  "character.removed.successfully" : "Character successfully excluded",
   "home.last.series.added" : "Last series added",
   "commons.no.records.found" : "No records found"
 }

@@ -1,16 +1,15 @@
 package br.com.cezarcruz.data.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 
 /**
  * Representing a character, maybe change for another name.
  */
 @Entity
-public class Persona {
+@Table(name = "persona")
+public class Character {
 
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -18,9 +17,15 @@ public class Persona {
     private String surname;
     private Integer age;
 
-    public Persona(){}
+    @Column(name = "created_at")
+    public Date createdAt;
 
-    public Persona(Long id, String name, String surname, Integer age) {
+    @Column(name = "updated_at")
+    public Date updatedAt;
+
+    public Character(){}
+
+    public Character(Long id, String name, String surname, Integer age) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -57,5 +62,15 @@ public class Persona {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = this.updatedAt = new Date();
+    }
+
+    @PreUpdate
+    void updatedAt() {
+        this.updatedAt = new Date();
     }
 }

@@ -15,7 +15,10 @@
   "series.name" : "Nome do seriado",
   "series.current.season" : "Temporada atual",
   "series.save.with.success" : "Seriado salvo com sucesso",
+  "series.removed.successfully" : "Seriado excluido com sucesso",
   "series.want.to.delete.this.show" : "Deseja excluir o seriado",
+  "character.want.to.delete.this.character" : "Deseja excluir o personagem",
+  "character.removed.successfully" : "Personagem excluido com sucesso",
   "home.last.series.added" : "Ultimos seriados adicionados",
   "commons.no.records.found" : "Nenhum registro encontrado"
 }
