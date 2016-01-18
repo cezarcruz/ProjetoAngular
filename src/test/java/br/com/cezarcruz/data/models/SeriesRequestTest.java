@@ -3,8 +3,6 @@ package br.com.cezarcruz.data.models;
 import br.com.cezarcruz.web.json.SeriesRequest;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * Really Really fake test
  */

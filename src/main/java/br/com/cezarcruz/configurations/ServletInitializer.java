@@ -1,9 +1,8 @@
 package br.com.cezarcruz.configurations;
 
+import br.com.cezarcruz.Application;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-
-import br.com.cezarcruz.Application;
 
 /**
  * Initialize the spring web
