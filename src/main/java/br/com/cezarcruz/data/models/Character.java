@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "persona")
 public class Character {
 
-    @Id @GeneratedValue(strategy= GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;
@@ -65,12 +65,12 @@ public class Character {
     }
 
     @PrePersist
-    void createdAt() {
+    public void createdAt() {
         this.createdAt = this.updatedAt = new Date();
     }
 
     @PreUpdate
-    void updatedAt() {
+    public void updatedAt() {
         this.updatedAt = new Date();
     }
 }

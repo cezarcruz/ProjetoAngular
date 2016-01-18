@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Series {
 
-	@Id @GeneratedValue(strategy= GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private Integer season;
@@ -52,12 +52,12 @@ public class Series {
 	}
 
 	@PrePersist
-	void createdAt() {
+	public void createdAt() {
 		this.createdAt = this.updatedAt = new Date();
 	}
 
 	@PreUpdate
-	void updatedAt() {
+	public void updatedAt() {
 		this.updatedAt = new Date();
 	}
 }
