@@ -20,5 +20,6 @@
   "character.want.to.delete.this.character" : "Want to delete this character",
   "character.removed.successfully" : "Character successfully excluded",
   "home.last.series.added" : "Last series added",
-  "commons.no.records.found" : "No records found"
+  "commons.no.records.found" : "No records found",
+  "commons.photo" : "Photo"
 }

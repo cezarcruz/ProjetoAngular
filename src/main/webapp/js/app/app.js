@@ -9,7 +9,8 @@
 	                        'app.characters',
 	                        'app.translate',
 	                        'app.home',
-	                        'last-series']);
+	                        'last-series',
+	                        'files']);
 
 	// Configura as rotas.
 	angular.module('app').config(config).run(['UrlService', '$location', run]);

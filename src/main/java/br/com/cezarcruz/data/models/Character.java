@@ -16,6 +16,7 @@ public class Character {
     private String name;
     private String surname;
     private Integer age;
+    private String photo;
 
     @Column(name = "created_at")
     public Date createdAt;
@@ -25,11 +26,12 @@ public class Character {
 
     public Character(){}
 
-    public Character(Long id, String name, String surname, Integer age) {
+    public Character(Long id, String name, String surname, Integer age, String photo) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class Character {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @PrePersist

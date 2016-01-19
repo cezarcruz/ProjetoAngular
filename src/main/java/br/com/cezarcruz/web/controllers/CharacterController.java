@@ -5,10 +5,12 @@ import br.com.cezarcruz.data.repositories.CharacterRepository;
 import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.web.json.CharacterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 /**
@@ -23,19 +25,41 @@ public class CharacterController {
 
     /**
      * Controller que insere um novo personagem
-     * @param characterRequest
-     * @param result
      * @throws BusinessException
      */
     @RequestMapping(method = RequestMethod.POST)
-    public void insert(@Valid @RequestBody final CharacterRequest characterRequest,
-                        final BindingResult result) throws BusinessException {
-        
-        if (result.hasErrors()) {
-            throw new BusinessException(result.getAllErrors());
-        }
+    public void insert(@RequestParam("file") MultipartFile file,
+                       @RequestParam("name") String name,
+                       @RequestParam("surname") String surname,
+                       @RequestParam("age") Integer age) throws BusinessException {
 
-        characterRepository.save(characterRequest.toCharacter());
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                String rootPath = System.getProperty("catalina.home");
+                File dir = new File(rootPath + File.separator + "tmpFiles");
+
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                File serveFile = new File(dir.getAbsolutePath() + File.separator + file.getOriginalFilename());
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serveFile));
+                stream.write(bytes);
+                stream.close();
+
+                CharacterRequest characterRequest = new CharacterRequest();
+                characterRequest.setAge(age);
+                characterRequest.setName(name);
+                characterRequest.setSurname(surname);
+                characterRequest.setPhoto(serveFile.getAbsolutePath());
+
+                characterRepository.save(characterRequest.toCharacter());
+
+            } catch (Exception ex) {
+                System.out.println("Error");
+            }
+        }
     }
 
     @RequestMapping(value="/list", method = RequestMethod.GET)

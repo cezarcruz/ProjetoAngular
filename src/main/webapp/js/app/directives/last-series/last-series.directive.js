@@ -4,7 +4,7 @@
     * @desc search the last series added in system
     * @example <last-five-series></last-five-series>
     */
-    angular.module('app').directive('lastSeries', lastSeries);
+    angular.module('last-series').directive('lastSeries', lastSeries);
 
     LastSeriesController.$inject = ['$scope', 'SeriesService', '$filter'];
 

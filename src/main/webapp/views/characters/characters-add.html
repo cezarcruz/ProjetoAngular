@@ -14,6 +14,10 @@
             <label>{{ 'commons.age' | translate }}</label>
             <input type="text" class="form-control" data-ng-model="vm.character.age" placeholder="{{ 'commons.age' | translate }}">
         </div>
+        <div class="form-group">
+            <label>{{ 'commons.photo' | translate }}</label>
+            <input type="file" file-model="vm.character.file" />
+        </div>
         <input type="button" class="btn btn-danger" data-ng-click="vm.save(vm.character)" value="{{ 'commons.save' | translate }}">
     </form>
     <hr>

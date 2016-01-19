@@ -11,6 +11,7 @@ public class CharacterRequest {
     private String name;
     private String surname;
     private Integer age;
+    private String photo;
 
     public Long getId() {
         return id;
@@ -44,7 +45,15 @@ public class CharacterRequest {
         this.age = age;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public Character toCharacter() {
-        return new Character(this.getId(), this.getName(), this.getSurname(), this.getAge());
+        return new Character(this.getId(), this.getName(), this.getSurname(), this.getAge(), this.getPhoto());
     }
 }

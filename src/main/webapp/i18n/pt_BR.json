@@ -20,5 +20,6 @@
   "character.want.to.delete.this.character" : "Deseja excluir o personagem",
   "character.removed.successfully" : "Personagem excluido com sucesso",
   "home.last.series.added" : "Ultimos seriados adicionados",
-  "commons.no.records.found" : "Nenhum registro encontrado"
+  "commons.no.records.found" : "Nenhum registro encontrado",
+  "commons.photo" : "Foto"
 }

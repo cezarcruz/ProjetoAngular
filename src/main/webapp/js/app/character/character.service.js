@@ -15,7 +15,19 @@
         return service;
         
         function saveCharacter(character) {
-            return $http.post(UrlService.getSiteUrl() + 'characters/', character);
+            var fd = new FormData();
+
+            fd.append('file', character.file);
+            fd.append('name', character.name);
+            fd.append('surname', character.surname);
+            fd.append('age', character.age);
+
+            return $http.post(UrlService.getSiteUrl() + 'characters/', fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            });
+
+            //return $http.post(UrlService.getSiteUrl() + 'characters/', character);
         }
 
         function getAllCharacters() {
