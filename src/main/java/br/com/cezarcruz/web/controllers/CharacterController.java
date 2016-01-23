@@ -1,16 +1,16 @@
 package br.com.cezarcruz.web.controllers;
 
 import br.com.cezarcruz.data.models.Character;
+import br.com.cezarcruz.data.models.ErrorInfo;
 import br.com.cezarcruz.data.repositories.CharacterRepository;
 import br.com.cezarcruz.exception.BusinessException;
+import br.com.cezarcruz.services.FileService;
 import br.com.cezarcruz.web.json.CharacterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,6 +23,9 @@ public class CharacterController {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private FileService fileService;
+
     /**
      * Controller que insere um novo personagem
      * @throws BusinessException
@@ -33,32 +36,19 @@ public class CharacterController {
                        @RequestParam("surname") String surname,
                        @RequestParam("age") Integer age) throws BusinessException {
 
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                String rootPath = System.getProperty("catalina.home");
-                File dir = new File(rootPath + File.separator + "tmpFiles");
+        try {
 
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
+            CharacterRequest characterRequest = new CharacterRequest();
+            characterRequest.setAge(age);
+            characterRequest.setName(name);
+            characterRequest.setSurname(surname);
+            characterRequest.setPhoto(fileService.saveFile(file));
 
-                File serveFile = new File(dir.getAbsolutePath() + File.separator + file.getOriginalFilename());
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serveFile));
-                stream.write(bytes);
-                stream.close();
-
-                CharacterRequest characterRequest = new CharacterRequest();
-                characterRequest.setAge(age);
-                characterRequest.setName(name);
-                characterRequest.setSurname(surname);
-                characterRequest.setPhoto(serveFile.getAbsolutePath());
-
-                characterRepository.save(characterRequest.toCharacter());
-
-            } catch (Exception ex) {
-                System.out.println("Error");
-            }
+            characterRepository.save(characterRequest.toCharacter());
+        } catch (IOException ioEx) {
+            //TODO: remove this detailed ex.
+            ErrorInfo ef = new ErrorInfo("000", ioEx.getMessage());
+            throw new BusinessException(ef);
         }
     }
 

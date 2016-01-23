@@ -60,6 +60,7 @@
         };
 
         function clear() {
+            vm.character.file = undefined;
             vm.character = {};
         }
     }
