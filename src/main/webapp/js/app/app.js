@@ -1,4 +1,4 @@
-(function() {
+;(function() {
     'use strict';
 	angular.module('app', [ 'ui.router',
 	                        'pascalprecht.translate',
@@ -13,19 +13,12 @@
 	                        'files']);
 
 	// Configura as rotas.
-	angular.module('app').config(config).run(['UrlService', '$location', run]);
+	angular.module('app').run(run).config(config);
 
-	run.$inject = ['UrlService', '$location'];
+	run.$inject = ['UrlService'];
 
-	function run (UrlService, $location) {
-		var url;
-		url = $location.absUrl().substring(0, $location.absUrl().indexOf('#') - 0);
-
-		if (url === "" || url === undefined) {
-			url = $location.absUrl();
-		}
-
-		UrlService.setSiteUrl(url);
+	function run (UrlService){		
+		UrlService.configSiteUrl();
 	}
 
 	config.$inject = ['$stateProvider', '$urlRouterProvider', '$translateProvider'];

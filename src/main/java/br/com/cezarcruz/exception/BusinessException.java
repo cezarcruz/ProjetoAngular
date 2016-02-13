@@ -7,13 +7,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Erros trataveis.
- * @author ccruz
- *
- */
 public class BusinessException extends Exception {
-
+	
+	private static final long serialVersionUID = -9030102185541153107L;
+	
 	private final transient Collection<ErrorInfo> errors;
 	
 	public BusinessException(Collection<ErrorInfo> errors) {

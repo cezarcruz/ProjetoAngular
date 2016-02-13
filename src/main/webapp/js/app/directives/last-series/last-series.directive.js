@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 
     /**
     * @desc search the last series added in system

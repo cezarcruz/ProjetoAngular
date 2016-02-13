@@ -13,3 +13,4 @@ src/main/webapp/js/dist
 .gradle
 build
 node_modules
+/bin/

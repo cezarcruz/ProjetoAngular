@@ -1,4 +1,4 @@
-(function() {
+;(function() {
     angular.module('files').directive('fileModel', fileModel);
 
     fileModel.$inject = ['$parse'];

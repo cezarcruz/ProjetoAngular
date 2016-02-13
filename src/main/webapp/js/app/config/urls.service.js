@@ -1,12 +1,15 @@
-(function() {
+;(function() {
     'use strict';
-	angular.module("app.urls", []).factory('UrlService', [UrlService]);
+	angular.module("app.urls", []).factory('UrlService', UrlService);
 
-	function UrlService() {
+	UrlService.$inject = ['$location'];
+	
+	function UrlService($location) {
 
 		var service = {
 			setSiteUrl : setSiteUrl,
-			getSiteUrl : getSiteUrl
+			getSiteUrl : getSiteUrl,
+			configSiteUrl: configSiteUrl
 		};
 		
 
@@ -17,7 +20,20 @@
 		}
 
 		function getSiteUrl() {
-			return SiteUrl;
+			if (SiteUrl) return SiteUrl;
+			else configSiteUrl(); return SiteUrl;
+		}
+		
+		function configSiteUrl() {
+			var url;
+			
+			url = $location.absUrl().substring(0, $location.absUrl().indexOf('#') - 0);
+
+			if (url === "" || url === undefined) {
+				url = $location.absUrl();
+			}
+			
+			SiteUrl = url;
 		}
 
 		return service;
