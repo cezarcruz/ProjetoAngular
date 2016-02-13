@@ -21,7 +21,8 @@ public class Series {
         //empty
 	}
 
-	public Series(String name, Integer season, Long id) {
+	public Series(final String name, 
+				  final Integer season, Long id) {
 		this.name = name;
 		this.season = season;
 		this.id = id;
@@ -39,7 +40,7 @@ public class Series {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -47,7 +48,7 @@ public class Series {
 		return season;
 	}
 
-	public void setSeason(Integer season) {
+	public void setSeason(final Integer season) {
 		this.season = season;
 	}
 

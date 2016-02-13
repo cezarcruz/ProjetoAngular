@@ -21,22 +21,24 @@ public class FileService {
      * @param file
      * @return Path of saved file
      */
-    public String saveFile(MultipartFile file)
+    public String saveFile(final MultipartFile file)
             throws IllegalArgumentException, IOException {
         if (!file.isEmpty()) {
             try {
-                byte[] bytes = file.getBytes();
-                String rootPath = System.getProperty("catalina.home");
-                File dir = new File(rootPath + File.separator + "tmpFiles");
+            	LOGGER.info("writing file file {}", file.getOriginalFilename());
+                final byte[] bytes = file.getBytes();
+                final String rootPath = System.getProperty("catalina.home");
+                final File dir = new File(rootPath + File.separator + "tmpFiles");
 
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
 
-                File serveFile = new File(dir.getAbsolutePath() + File.separator + file.getOriginalFilename());
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serveFile));
+                final File serveFile = new File(dir.getAbsolutePath() + File.separator + file.getOriginalFilename());
+                final BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serveFile));
                 stream.write(bytes);
                 stream.close();
+                LOGGER.info("file writed with success: {}", serveFile.getAbsolutePath());
                 return serveFile.getAbsolutePath();
             } catch (IOException ex) {
                 LOGGER.error("error on saving file {}", ex.getMessage());

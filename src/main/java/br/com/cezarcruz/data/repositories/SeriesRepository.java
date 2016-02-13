@@ -7,9 +7,9 @@ import org.springframework.data.repository.Repository;
 import java.util.List;
 
 public interface SeriesRepository extends Repository<Series, Long> {
-    Series save(Series s);
+    Series save(final Series s);
     List<Series> findAll();
-    Long delete(Long id);
-    Series findOne(Long id);
-    List<Series> findAllByOrderByCreatedAtDesc(Pageable pageable);
+    Long delete(final Long id);
+    Series findOne(final Long id);
+    List<Series> findAllByOrderByCreatedAtDesc(final Pageable pageable);
 }

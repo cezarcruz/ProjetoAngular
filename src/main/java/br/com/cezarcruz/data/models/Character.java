@@ -26,7 +26,11 @@ public class Character {
 
     public Character(){}
 
-    public Character(Long id, String name, String surname, Integer age, String photo) {
+    public Character(final Long id, 
+    				 final String name, 
+    				 final String surname, 
+    				 final Integer age, 
+    				 final String photo) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -38,7 +42,7 @@ public class Character {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -46,7 +50,7 @@ public class Character {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -54,7 +58,7 @@ public class Character {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
@@ -62,7 +66,7 @@ public class Character {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(final Integer age) {
         this.age = age;
     }
 
@@ -70,7 +74,7 @@ public class Character {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(final String photo) {
         this.photo = photo;
     }
 

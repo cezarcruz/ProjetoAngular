@@ -12,7 +12,7 @@ public class SeriesRequest {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
     
@@ -20,7 +20,7 @@ public class SeriesRequest {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -28,7 +28,7 @@ public class SeriesRequest {
 		return season;
 	}
 
-	public void setSeason(Integer season) {
+	public void setSeason(final Integer season) {
 		this.season = season;
 	}
 

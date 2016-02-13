@@ -13,7 +13,7 @@ public class FileRequest {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -21,7 +21,7 @@ public class FileRequest {
         return file;
     }
 
-    public void setFile(MultipartFile file) {
+    public void setFile(final MultipartFile file) {
         this.file = file;
     }
 }

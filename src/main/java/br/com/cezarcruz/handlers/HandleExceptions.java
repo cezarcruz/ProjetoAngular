@@ -19,7 +19,7 @@ public class HandleExceptions {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(BusinessException.class)
 	@ResponseBody
-	List<ErrorInfo> handleInvalidValueException(BusinessException bEx) {
+	List<ErrorInfo> handleInvalidValueException(final BusinessException bEx) {
 
 		for (ErrorInfo error : bEx.getErrors()) {
 			LOGGER.error(error.getMessage());

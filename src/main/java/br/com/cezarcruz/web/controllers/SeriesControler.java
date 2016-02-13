@@ -37,6 +37,7 @@ public class SeriesControler {
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public List<Series> getAll() {
+		LOGGER.info("getting all series");
 		return repository.findAll();
 	}
 	
@@ -46,6 +47,7 @@ public class SeriesControler {
 	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") final  String id) {
+		LOGGER.info("deletting serie: {}", id);
 		repository.delete(Long.parseLong(id));
 	}
 	
@@ -60,8 +62,8 @@ public class SeriesControler {
 	}
 
 	@RequestMapping(value="/last-series/{quantity}", method = RequestMethod.GET)
-	public List<Series> getLastSeries(@PathVariable("quantity") Integer quantity) {
-		LOGGER.debug("Getting last {} series", quantity);
+	public List<Series> getLastSeries(@PathVariable("quantity") final Integer quantity) {
+		LOGGER.info("Getting last {} series", quantity);
         Pageable top = new PageRequest(0, quantity);
 		return repository.findAllByOrderByCreatedAtDesc(top);
 	}

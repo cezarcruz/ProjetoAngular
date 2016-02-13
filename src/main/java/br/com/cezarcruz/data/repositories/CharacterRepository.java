@@ -10,8 +10,8 @@ import java.util.List;
  * Created by cezar on 28/04/15.
  */
 public interface CharacterRepository extends Repository<Character, Long> {
-    Character save(Character p);
+    Character save(final Character p);
     List<Character> findAll();
     Long delete(Long id);
-    List<Character> findAllByOrderByCreatedAtDesc(Pageable pageable);
+    List<Character> findAllByOrderByCreatedAtDesc(final Pageable pageable);
 }

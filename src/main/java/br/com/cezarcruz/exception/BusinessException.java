@@ -13,11 +13,11 @@ public class BusinessException extends Exception {
 	
 	private final transient Collection<ErrorInfo> errors;
 	
-	public BusinessException(Collection<ErrorInfo> errors) {
+	public BusinessException(final Collection<ErrorInfo> errors) {
 		this.errors = errors;
 	}
 	
-	public BusinessException(List<ObjectError> validationsErrors) {
+	public BusinessException(final List<ObjectError> validationsErrors) {
 		errors = new ArrayList<ErrorInfo>();
 		for (ObjectError e : validationsErrors) {
 			ErrorInfo eInf = new ErrorInfo(e.getCode(), e.getDefaultMessage());
@@ -25,7 +25,7 @@ public class BusinessException extends Exception {
 		}
 	}
 	
-	public BusinessException(ErrorInfo error) {
+	public BusinessException(final ErrorInfo error) {
 		errors = new ArrayList<ErrorInfo>();
 		errors.add(error);
 	}
