@@ -6,9 +6,6 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-/**
- * Created by cezar on 28/04/15.
- */
 public interface CharacterRepository extends Repository<Character, Long> {
     Character save(final Character p);
     List<Character> findAll();
