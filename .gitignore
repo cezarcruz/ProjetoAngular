@@ -8,6 +8,8 @@ target
 .idea
 *.iml
 
+.vscode
+
 src/main/webapp/vendor
 src/main/webapp/js/dist
 .gradle

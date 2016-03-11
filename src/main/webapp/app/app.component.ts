@@ -3,18 +3,19 @@ import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { HomeComponent } from './home/home.component';
 import { SeriesComponent } from './series/series.component';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
     selector: 'my-app',
     template: `
-                <h1>From app.component</h1>
-                <nav>
-                    <a [routerLink]="['HomeRouter']">Home</a>
-                    <a [routerLink]="['SeriesRouter']">Series</a>
-                </nav>
-                <router-outlet></router-outlet>
+                <head-menu></head-menu>
+                <div class="container">
+                    <div class="starter-template">         
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
               `,
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, MenuComponent]
 })
 @RouteConfig([
     { path: '/home', name: 'HomeRouter', component: HomeComponent, useAsDefault: true},

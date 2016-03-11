@@ -4,11 +4,11 @@ import { Serie } from './serie';
 
 @Component({
     selector: '<series-list></series-list>',
-    template: ` 
-        <ul *ngIf="series">
-            <li *ngFor="#serie of series">
+    template: `        
+        <ul *ngIf="series" >
+            <li *ngFor="#serie of series; #i=index">
                 {{ serie.name }}
-            <li>
+            </li>
         </ul>
     `
 })
