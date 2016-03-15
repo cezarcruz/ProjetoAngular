@@ -1,3 +1,3 @@
-export class Serie {
-    constructor(id: number, name: string, season: number) {};
+export class Serie {    
+    constructor(id: number, name: string, season: number) {};    
 }

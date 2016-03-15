@@ -4,7 +4,8 @@ import { Serie } from './serie';
 
 @Component({
     selector: '<series-list></series-list>',
-    template: `        
+    template: `
+        <h1>Series list</h1>        
         <ul *ngIf="series" >
             <li *ngFor="#serie of series; #i=index">
                 {{ serie.name }}
