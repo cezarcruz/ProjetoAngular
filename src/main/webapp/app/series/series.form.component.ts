@@ -10,8 +10,7 @@ import {Serie} from './serie';
         <form>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" [(ngModel)]="model.name" required ngControl="name" #spy>
-                {{ spy.className }}                
+                <input type="text" class="form-control" [(ngModel)]="model.name" required ngControl="name">                
             </div>
             <div class="form-group">
                 <label for="season">Season</label>
