@@ -50,14 +50,6 @@ eclipse {
     }
 }
 
-test {
-    testLogging {
-        // Show that tests are run in the command-line output
-        events 'started', 'passed'
-    }
-}
-
-
 task wrapper(type: Wrapper) {
     gradleVersion = '4.0.2'
 }

@@ -13,6 +13,18 @@ public class CharacterRequest {
     private Integer age;
     private String photo;
 
+    public CharacterRequest(final Long id,
+                            final String name,
+                            final String surname,
+                            final Integer age,
+                            final String photo) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.photo = photo;
+    }
+
     public Long getId() {
         return id;
     }

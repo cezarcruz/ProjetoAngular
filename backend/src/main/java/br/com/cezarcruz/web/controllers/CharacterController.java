@@ -7,6 +7,7 @@ import br.com.cezarcruz.exception.BusinessException;
 import br.com.cezarcruz.services.FileService;
 import br.com.cezarcruz.web.json.CharacterRequest;
 
+import br.com.cezarcruz.web.json.builder.CharacterRequestBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,17 @@ public class CharacterController {
     	LOGGER.info("init controller CharacterController::insert");
     	
         try {
-        	
-            final CharacterRequest characterRequest = new CharacterRequest();
-            characterRequest.setAge(age);
-            characterRequest.setName(name);
-            characterRequest.setSurname(surname);
-            characterRequest.setPhoto(fileService.saveFile(file));
+
+            final CharacterRequest characterRequest
+                    = new CharacterRequestBuilder()
+                            .age(age)
+                            .name(name)
+                            .surname(surname)
+                            .photo(fileService.saveFile(file))
+                            .build();
 
             characterRepository.save(characterRequest.toCharacter());
+
         } catch (IOException ioEx) {
             //TODO: remove this detailed ex.
             ErrorInfo ef = new ErrorInfo("000", ioEx.getMessage());
